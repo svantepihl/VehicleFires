@@ -6,10 +6,9 @@ dat_msb <- read_excel("msb.xlsx",
                                     "text", "text", "numeric", "text", 
                                     "text"))
 
-# change data-type kommun nummer to integer to make it easier to work with  
-str(dat_msb$kommun)
-dat_msb$kommun<- as.integer(dat_msb$kommun)
-str(dat_msb$kommun)
+
+#colnames
+colnames(dat_msb) [8] <- "Reason"
 
 
 #Data cleaning- create separate year, quarter, month, day, hour and minute variables. 
@@ -20,16 +19,19 @@ dat_msb$day <- day(dat_msb$datum)
 dat_msb$hour <- hour(dat_msb$tid)
 dat_msb$minute <- minute(dat_msb$tid)
 
+# We rename the Reasons behind the carfires to english
+dat_msb$Reason [dat_msb$Reason != "Fel i utrustning"& dat_msb$Reason != "Avsiktlig brand"& dat_msb$Reason != "Okänd"] <-"Other Reason"
+dat_msb$Reason [dat_msb$Reason == "Avsiktlig brand"] <- "Arson"
+dat_msb$Reason [dat_msb$Reason == "Fel i utrustning"] <- "Technical Malfunctioning"
+dat_msb$Reason [dat_msb$Reason == "Okänd"] <- "Unknown"
+
 # subset: anlagd, fel i utrustning, okänd, annat
-anlagda <- filter(dat_msb, dat_msb$BEJBbrandorsakText == "Avsiktlig brand")
-fel_i_utrustning <- filter(dat_msb, dat_msb$BEJBbrandorsakText == "Fel i utrustning")
-okända <- filter(dat_msb, dat_msb$BEJBbrandorsakText == "Okänd")
-annat <- filter(dat_msb, dat_msb$BEJBbrandorsakText != "Fel i utrustning", dat_msb$BEJBbrandorsakText != "Avsiktlig brand", dat_msb$BEJBbrandorsakText != "Okänd")
+Arson <- filter(dat_msb, dat_msb$Reason == "Arson")
+Technical_malfunctioning <- filter(dat_msb, dat_msb$Reason == "Technical Malfunctioning")
+Unknown <- filter(dat_msb, dat_msb$Reason == "Unknown")
+Others <- filter(dat_msb, dat_msb$Reason != "Arson", dat_msb$Reason != "Technical Malfunctioning", dat_msb$Reason != "Unknown")
 
 
-dat_msb$BEJBbrandorsakText [dat_msb$BEJBbrandorsakText != "Fel i utrustning"& dat_msb$BEJBbrandorsakText != "Avsiktlig brand"& dat_msb$BEJBbrandorsakText != "Okänd"] <-"Annat"
-  
-dat_msb$BEJBbrandorsakText <- factor(dat_msb$BEJBbrandorsakText, levels = c("unkown", "other reason", "techincal malfunctioning", "arson"))
 
 
 ######### Anlagda Bilbränder  ############
