@@ -20,12 +20,17 @@ dat_msb$day <- day(dat_msb$datum)
 dat_msb$hour <- hour(dat_msb$tid)
 dat_msb$minute <- minute(dat_msb$tid)
 
-  
-
 # subset: anlagd, fel i utrustning, okänd, annat
 anlagda <- filter(dat_msb, dat_msb$BEJBbrandorsakText == "Avsiktlig brand")
 fel_i_utrustning <- filter(dat_msb, dat_msb$BEJBbrandorsakText == "Fel i utrustning")
-annat <- filter(dat_msb, dat_msb$BEJBbrandorsakText != "Fel i utrustning", dat_msb$BEJBbrandorsakText != "Avsiktlig brand" )
+okända <- filter(dat_msb, dat_msb$BEJBbrandorsakText == "Okänd")
+annat <- filter(dat_msb, dat_msb$BEJBbrandorsakText != "Fel i utrustning", dat_msb$BEJBbrandorsakText != "Avsiktlig brand", dat_msb$BEJBbrandorsakText != "Okänd")
+
+
+dat_msb$BEJBbrandorsakText [dat_msb$BEJBbrandorsakText != "Fel i utrustning"& dat_msb$BEJBbrandorsakText != "Avsiktlig brand"& dat_msb$BEJBbrandorsakText != "Okänd"] <-"Annat"
+  
+dat_msb$BEJBbrandorsakText <- factor(dat_msb$BEJBbrandorsakText, levels = c("unkown", "other reason", "techincal malfunctioning", "arson"))
+
 
 ######### Anlagda Bilbränder  ############
 

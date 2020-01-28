@@ -8,9 +8,11 @@ labels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"
 
 # yearly, comparision betweeen different causes 
 breaks = seq(1998, 2018, by=1)
-ggplot() + geom_freqpoly(data = anlagda, aes(x=year, colour ="red"), binwidth = 1) + 
-  geom_freqpoly(data = fel_i_utrustning, aes(x=year, colour = "blue"), binwidth=1) + geom_freqpoly(data = annat, aes(x=year, colour = "black"), binwidth=1) + 
-  xlim (1998, 2018)  + theme(legend.position="right") + labs(y= "amount") + scale_color_identity(guide=guide_legend(reverse = TRUE), name="cause", labels= c("other reason", "technical malfunctioning", "arson")) 
+
+ggplot() + 
+  geom_freqpoly(data = anlagda, aes(x=year, colour ="red"), binwidth = 1) + 
+  geom_freqpoly(data = fel_i_utrustning, aes(x=year, colour = "blue"), binwidth=1) + geom_freqpoly(data = annat, aes(x=year, colour = "green"), binwidth=1) + geom_freqpoly(data = okända, aes(x=year, colour = "black"), binwidth=1)+
+  theme(legend.position="right")  + scale_colour_identity(guide = "legend", name= "cause",  labels= c("unknown","technical malfunctioning", "other reason","arson" )) + labs(y = "amount") + xlim (1998, 2018) + guides(color = guide_legend(reverse = TRUE))
 
 
 #yearly, riket
@@ -32,3 +34,7 @@ max(annat$year)
 filter(annat, year=="1998")
 filter(annat, year=="1999")
 filter(annat, year=="2000")
+
+# yearly, län
+Blekinge %>% 
+  ggplot(aes(year)) + geom_freqpoly(binwidth = 1) + xlim (1998, 2018) + labs(y = "amount")
