@@ -6,7 +6,6 @@ Arson <- filter(dat_msb, dat_msb$Reason == "Arson")
 labels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
 # yearly, comparision betweeen different causes 
-breaks = seq(1998, 2018, by=1)
 
 #Option 1
 ggplot() + 
