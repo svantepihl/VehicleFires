@@ -12,8 +12,6 @@ ggplot() +
 #Option 2
 ggplot(dat_msb, binwidth=1, aes(x=year, colour = Reason)) + geom_freqpoly (binwidth = 1) + xlim (1998, 2018) + labs (y="amount")
 
-
-
 #yearly, riket
 
 dat_msb %>% 
@@ -56,7 +54,6 @@ Arson %>%
 Arson %>% 
   ggplot(aes(quarter)) + geom_bar(aes(fill = as.factor(quarter))) + labs(y = "amount") + scale_fill_discrete(name = "Quarters", labels = c("Jan - Mar", "Apr - Jun", "Jul - Sep", "Oct - Dec"))
   
-
 #monthly, riket
 
 #Create labels and breaks for the months
@@ -73,6 +70,7 @@ Arson %>%
   ggplot(aes(month))+ geom_bar(aes(fill = as.factor(month))) + 
   scale_x_continuous(breaks=breaks, labels = labels) + 
   labs(y = "amount") + scale_fill_discrete(name = "Month", labels = labels)
+
 
 # yearly, all län at once!!
 
