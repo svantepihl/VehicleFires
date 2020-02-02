@@ -21,12 +21,12 @@ dat_2018$hour <- hour(dat_2018$time)
 dat_2018$minute <- minute(dat_2018$time)
 
 # We rename the causes behind the carfires to english
-dat_2018$cause [dat_2018$cause != "Fel i utrustning"& dat_2018$cause != "Avsiktlig brand"& dat_2018$cause != "Okänd"] <-"Other cause"
+dat_2018$cause [dat_2018$cause != "Fel i utrustning"& dat_2018$cause != "Avsiktlig händelse"& dat_2018$cause != "Gick inte att bedöma"] <-"Other cause"
 dat_2018$cause [dat_2018$cause == "Avsiktlig händelse"] <- "Arson"
 dat_2018$cause [dat_2018$cause == "Fel i utrustning"] <- "Technical Malfunctioning"
-dat_2018$cause [dat_2018$cause == "Okänd"] <- "Unknown"
+dat_2018$cause [dat_2018$cause == "Gick inte att bedöma"] <- "Unknown"
 
-# subset: anlagd, fel i utrustning, okänd, annat
+# subset: anlagd, fel i utrustning, Gick inte att bedöma, annat
 Arson_2018 <- filter(dat_2018, dat_2018$cause == "Arson")
 Technical_malfunctioning_2018 <- filter(dat_2018, dat_2018$cause == "Technical Malfunctioning")
 Unknown_2018 <- filter(dat_2018, dat_2018$cause == "Unknown")
