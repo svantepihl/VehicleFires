@@ -25,13 +25,13 @@ dat_msb %>%
 #monthly, riket
 
 #Create labels and breaks for the months
-labels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+labels_month <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
-breaks = seq(1, 12, by=1)
+breaks_month = seq(1, 12, by=1)
 
 # Option 1
 dat_msb %>% 
-  ggplot(aes(month))+ geom_freqpoly(binwidth = 1) + scale_x_continuous(limits = c(1, 12), breaks=breaks, labels = labels) + labs(y = "amount")
+  ggplot(aes(month))+ geom_freqpoly(binwidth = 1) + scale_x_continuous(limits = c(1, 12), breaks=breaks_month, labels = labels_month) + labs(y = "amount")
 
 # Option 2
 dat_msb %>% 
@@ -39,7 +39,25 @@ dat_msb %>%
   scale_x_continuous(breaks=breaks, labels = labels) + 
   labs(y = "amount") + scale_fill_discrete(name = "Month", labels = labels)
 
+# Day of the month, riket 
+#Option 1
+dat_msb %>% 
+  ggplot(aes(day))+ geom_freqpoly(binwidth = 1) + scale_x_continuous(limits = c(1, 7), breaks=breaks_days, labels = labels_days) + labs(y = "amount")
 
+#Option 2
+dat_msb %>% 
+  ggplot(aes(day))+ geom_bar(aes(fill = as.factor(day))) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Day", labels = labels)
+
+# Weekday, riket
+
+breaks_weekdays = seq(1, 7, by=1)
+labels_weekdays = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+
+dat_msb %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(weekday))) +
+ scale_x_discrete (breaks=breaks_weekdays, labels = labels_weekdays) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Day", labels = labels_weekdays)
 
 ##### Anlagda Bilbränder, riket######
 

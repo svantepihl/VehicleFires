@@ -1,4 +1,9 @@
+require(tidyverse)
+require(readxl)
+require(lubridate)
+
 dat_2018 <- read_excel("dat_msb_2018.xlsx")
+
 colnames(dat_2018) <- c("code", "date", "time", "originary_fire", "consequence_fire", 
                         "län_code", "län_name","kommun_code", "kommun_name",
                         "kommun-type_code", "kommun_type", "deso_code", 
