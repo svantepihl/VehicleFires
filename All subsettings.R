@@ -191,4 +191,38 @@ dat_msb$län [dat_msb$län > 2499 & dat_msb$län < 2600] <- "Norrbotten"
 
 
 
+###### Weekdays Substetting #####
+
+Monday <-  filter(Arson, weekday == "måndag")
+Tuesday <- filter(Arson, weekday == "tisdag")
+Wednesday <- filter(Arson, weekday == "onsdag")
+Thursday <- filter(Arson, weekday == "torsdag")
+Friday <- filter(Arson, weekday == "fredag")
+Saturday<- filter(Arson, weekday == "lördag")
+Sunday <- filter(Arson, weekday == "söndag")
+
+######## Years subsetting #########
+
+Ninety_eight <- filter(Arson, year == 1998)
+Ninety_nine <- filter(Arson, year == 1999)
+Zero_zero <- filter(Arson, year == 2000)
+Zero_one <- filter(Arson, year == 2001)
+Zero_two <- filter(Arson, year == 2002)
+Zero_three <- filter(Arson, year == 2003)
+Zero_four <- filter(Arson, year == 2004)
+Zero_five <- filter(Arson, year == 2005)
+Zero_six <- filter(Arson, year == 2006)
+Zero_seven <- filter(Arson, year == 2007)
+Zero_eight <- filter(Arson, year == 2008)
+Zero_nine <- filter(Arson, year == 2009)
+Ten <- filter(Arson, year == 2010)
+Eleven <- filter(Arson, year == 2011)
+Twelve <- filter(Arson, year == 2012)
+Thirteen <- filter(Arson, year == 2013)
+Fourteen <- filter(Arson, year == 2014)
+Fifteen <- filter(Arson, year == 2015)
+Sixteen <- filter(Arson, year == 2016)
+Seventeen <- filter(Arson, year == 2017)
+Eighteen <- filter(Arson, year == 2018)
+
 

@@ -59,6 +59,26 @@ dat_msb %>%
  scale_x_discrete (breaks=breaks_weekdays, labels = labels_weekdays) + 
   labs(y = "amount") + scale_fill_discrete(name = "Day", labels = labels_weekdays)
 
+# weekdays okända, riket
+
+# Weekday, arson, riket
+
+breaks_weekdays = seq(1, 7, by=1)
+labels_weekdays = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+
+Arson %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(weekday))) +
+  scale_x_discrete (breaks=breaks_weekdays, labels = labels_weekdays) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Day", labels = labels_weekdays)
+
+# weekdays okända, riket
+
+Unknown %>%
+  
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(weekday))) +
+  scale_x_discrete (breaks=breaks_weekdays, labels = labels_weekdays) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Day", labels = labels_weekdays)
+
 ##### Anlagda Bilbränder, riket######
 
 Arson <- filter(dat_msb, dat_msb$Reason == "Arson")
@@ -89,6 +109,31 @@ Arson %>%
   scale_x_continuous(breaks=breaks, labels = labels) + 
   labs(y = "amount") + scale_fill_discrete(name = "Month", labels = labels)
 
+# Weekdays, Riket
+
+breaks_weekdays = seq(1, 7, by=1)
+labels_weekdays = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+
+Arson %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = weekday)) +
+  scale_x_discrete (labels = labels_weekdays) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Day", labels = labels_weekdays)
+
+# Hours, riket
+
+breaks_hours = seq(1, 24, by=1)
+labels_hours = c("00-01", "01-02", "02-03", "03-04", "04-05", "05-06", "06-07", "07-08", "08-09", "09-10", "10-11", "11-12", "12-13", "13-14", "14-15", "15-16", "16-17", "17-18", "18-19", "19-20", "20-21", "21-22", "22-23", "23-24")
+
+
+Arson %>% 
+  ggplot(aes(hour)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Arson %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
 
 # yearly, all län at once!!
 
@@ -157,5 +202,134 @@ Västra_Götland %>%
 
 Östergöta %>% 
   ggplot(aes(year)) + geom_freqpoly(binwidth = 1) + xlim (1998, 2018) + labs(y = "amount")
+
+# Weekday and time, län by län
+
+Blekinge %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Dalarna %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Gotland %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour")
+
+Gävleborg %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Halland %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Jämtland %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Jönköping %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Kalmar %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Kronoberg %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Norrbotten %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Skåne %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Stockholm %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Södermalm %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Uppsala %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Värmland %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Västerbotten %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Västernorrland %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Västmanland %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Västra_Götland %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Örebro %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Östergöta %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Västernorrland %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+# Year by Year Visulaisations
+  
+Ninety_eight %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Ninety_nine %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours)
+
+Eighteen %>% 
+  ggplot(aes(weekday)) + geom_bar(aes(fill = as.factor(hour))) +
+  scale_x_discrete (breaks=breaks_hours, labels = labels_hours) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Hour", labels = labels_hours) 
 
 

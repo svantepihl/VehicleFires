@@ -17,6 +17,7 @@ dat_msb$quarter <- quarter(dat_msb$datum)
 dat_msb$month <- month(dat_msb$datum)
 dat_msb$day <- day(dat_msb$datum)
 dat_msb$weekday <- weekdays(dat_msb$datum)
+dat_msb$weekday <- factor(dat_msb$weekday, levels = c("måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag", "söndag"))
 dat_msb$hour <- hour(dat_msb$tid)
 dat_msb$minute <- minute(dat_msb$tid)
 
