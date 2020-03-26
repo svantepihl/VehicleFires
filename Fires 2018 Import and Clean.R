@@ -31,5 +31,8 @@ dat_2018$Reason [dat_2018$Reason == "Avsiktlig händelse"] <- "Arson"
 dat_2018$Reason [dat_2018$Reason == "Fel i utrustning"] <- "Technical Malfunctioning"
 dat_2018$Reason [dat_2018$Reason == "Gick inte att bedöma"] <- "Unknown"
 
-
+# Subset fires from Skåne, Västra Götland and Stockholm
+dat_skåne <- filter(dat_2018, dat_2018$Region_Code == 12)
+dat_göteborg <- filter(dat_2018, dat_2018$Region_Code == 14)
+dat_stockholm <- filter(dat_2018, dat_2018$Region_Code == 01)
 
