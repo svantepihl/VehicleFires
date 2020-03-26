@@ -10,6 +10,8 @@ dat_msb <- read_excel("msb.xlsx",
 #colnames
 colnames(dat_msb) [8] <- "Reason"
 
+dat_msb <- filter(dat_msb, dat_msb$BEJBBrandobjektGruppText == Personbil)
+
 
 #Data cleaning- create separate year, quarter, month, day, hour and minute variables. 
 dat_msb$year <- year(dat_msb$datum)
@@ -34,7 +36,5 @@ Technical_malfunctioning <- filter(dat_msb, dat_msb$Reason == "Technical Malfunc
 Unknown <- filter(dat_msb, dat_msb$Reason == "Unknown")
 Others <- filter(dat_msb, dat_msb$Reason != "Arson", dat_msb$Reason != "Technical Malfunctioning", dat_msb$Reason != "Unknown")
 
-
 ######### Anlagda Bilbränder  ############
-
 
