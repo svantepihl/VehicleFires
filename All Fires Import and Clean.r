@@ -20,11 +20,11 @@ dat_msb$Quarter <- quarter(dat_msb$Date)
 dat_msb$Month <- month(dat_msb$Date)
 dat_msb$Day <- day(dat_msb$Date)
 dat_msb$Weekday <- weekdays(dat_msb$Date)
-dat_msb$Weekday <- factor(dat_msb$Weekday, levels = c("måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag", "söndag"))
 dat_msb$Hour <- hour(dat_msb$Date)
 dat_msb$Minute <- minute(dat_msb$Date)
 dat_msb$Region_Code <- as.integer(as.integer(dat_msb$Municiplaity_Code)/100)
 dat_msb$Week <- isoweek(dat_msb$Date)
+
 
 
 
@@ -38,7 +38,7 @@ dat_msb$Reason [dat_msb$Reason == "Okänd"] <- "Unknown"
 
 # Subset fires from Skåne, Västra Götland and Stockholm
 
-dat_skåne <- filter(dat_msb, dat_msb$Region_Code == 12)
-dat_göteborg <- filter(dat_msb, dat_msb$Region_Code == 14)
+#dat_skåne <- filter(dat_msb, dat_msb$Region_Code == 12)
+#dat_göteborg <- filter(dat_msb, dat_msb$Region_Code == 14)
 dat_stockholm <- filter(dat_msb, dat_msb$Region_Code == 01)
 
