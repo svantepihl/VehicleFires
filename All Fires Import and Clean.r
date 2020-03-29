@@ -26,14 +26,34 @@ dat_msb$Region_Code <- as.integer(as.integer(dat_msb$Municiplaity_Code)/100)
 dat_msb$Week <- isoweek(dat_msb$Date)
 
 
-
-
 # We rename the Reasons behind the carfires to english
 dat_msb$Reason [dat_msb$Reason != "Fel i utrustning"& dat_msb$Reason != "Avsiktlig brand"& dat_msb$Reason != "Okänd"] <-"Other Reason"
 dat_msb$Reason [dat_msb$Reason == "Avsiktlig brand"] <- "Arson"
 dat_msb$Reason [dat_msb$Reason == "Fel i utrustning"] <- "Technical Malfunctioning"
 dat_msb$Reason [dat_msb$Reason == "Okänd"] <- "Unknown"
 
+
+# Create columns for holiday info YES/NO
+dat_msb$Holidays <- numeric(length(dat_msb$Date))
+dat_msb$Holidays <- as.logical(dat_msb$Holidays)
+
+dat_msb$Christmas_Holidays <- numeric(length(dat_msb$Date))
+dat_msb$Christmas_Holidays <- as.logical(dat_msb$Christmas_Holidays)
+
+dat_msb$Sport_Holidays <- numeric(length(dat_msb$Date))
+dat_msb$Sport_Holidays <- as.logical(dat_msb$Sport_Holidays)
+
+dat_msb$Easter_Holidays <- numeric(length(dat_msb$Date))
+dat_msb$Easter_Holidays <- as.logical(dat_msb$Easter_Holidays)
+
+dat_msb$Summer_Holidays <- numeric(length(dat_msb$Date))
+dat_msb$Summer_Holidays <- as.logical(dat_msb$Summer_Holidays)
+
+dat_msb$Autumn_Holidays <- numeric(length(dat_msb$Date))
+dat_msb$Autumn_Holidays <- as.logical(dat_msb$Autumn_Holidays)
+
+#Remove NA values
+dat_msb <- na.omit(dat_msb)
 
 
 # Subset fires from Skåne, Västra Götland and Stockholm

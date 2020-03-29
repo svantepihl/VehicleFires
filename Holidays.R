@@ -6,30 +6,8 @@ dat_holidays <- read_excel("Holidays/SkollovStockholm.xlsx",
                                 na = "NA")
 
 
-# Create columns for holiday info YES/NO
-dat_stockholm$Holidays <- numeric(length(dat_stockholm$Date))
-dat_stockholm$Holidays <- as.logical(dat_stockholm$Holidays)
-
-dat_stockholm$Christmas_Holidays <- numeric(length(dat_stockholm$Date))
-dat_stockholm$Christmas_Holidays <- as.logical(dat_stockholm$Christmas_Holidays)
-
-dat_stockholm$Sport_Holidays <- numeric(length(dat_stockholm$Date))
-dat_stockholm$Sport_Holidays <- as.logical(dat_stockholm$Sport_Holidays)
-
-dat_stockholm$Easter_Holidays <- numeric(length(dat_stockholm$Date))
-dat_stockholm$Easter_Holidays <- as.logical(dat_stockholm$Easter_Holidays)
-
-dat_stockholm$Summer_Holidays <- numeric(length(dat_stockholm$Date))
-dat_stockholm$Summer_Holidays <- as.logical(dat_stockholm$Summer_Holidays)
-
-dat_stockholm$Autumn_Holidays <- numeric(length(dat_stockholm$Date))
-dat_stockholm$Autumn_Holidays <- as.logical(dat_stockholm$Autumn_Holidays)
-
-
 #Remove NA values
 dat_holidays <- na.omit(dat_holidays)
-dat_stockholm <- na.omit(dat_stockholm)
-
 
 # Loop through datset and check if a valid holiday value
 for(i in 1:nrow(dat_stockholm)) {
@@ -61,11 +39,11 @@ for(i in 1:nrow(dat_stockholm)) {
           dat_stockholm$Autumn_Holidays[i] <- TRUE
           break()
         }
-        ## Check christmas holidays (end of year)
-        #if(dat_stockholm$Date[i] >= dat_holidays$Christmas_Holidays_Start[j]) {
-        #  dat_stockholm$Christmas_Holidays[i] <- TRUE
-        #  break()
-        #}
+        # Check christmas holidays (end of year)
+        if(dat_stockholm$Date[i] >= dat_holidays$Christmas_Holidays_Start[j]) {
+          dat_stockholm$Christmas_Holidays[i] <- TRUE
+          break()
+        }
       }
     }
   }
