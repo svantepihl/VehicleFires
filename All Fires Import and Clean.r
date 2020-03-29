@@ -24,6 +24,7 @@ dat_msb$Weekday <- factor(dat_msb$Weekday, levels = c("måndag", "tisdag", "onsd
 dat_msb$Hour <- hour(dat_msb$Date)
 dat_msb$Minute <- minute(dat_msb$Date)
 dat_msb$Region_Code <- as.integer(as.integer(dat_msb$Municiplaity_Code)/100)
+dat_msb$Week <- isoweek(dat_msb$Date)
 
 
 

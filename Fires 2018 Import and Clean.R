@@ -24,6 +24,7 @@ dat_2018$Month <- month(dat_2018$Date)
 dat_2018$Day <- day(dat_2018$Date)
 dat_2018$Hour <- hour(dat_2018$Time)
 dat_2018$Minute <- minute(dat_2018$Time)
+dat_2018$week <- isoweek(dat_2018$Date)
 
 # We rename the Reasons behind the carfires to english
 dat_2018$Reason [dat_2018$Reason != "Fel i utrustning"& dat_2018$Reason != "Avsiktlig händelse"& dat_2018$Reason != "Gick inte att bedöma"] <-"Other Reason"
