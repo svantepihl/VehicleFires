@@ -41,3 +41,4 @@ dat_msb$Reason [dat_msb$Reason == "Okänd"] <- "Unknown"
 dat_skåne <- filter(dat_msb, dat_msb$Region_Code == 12)
 dat_göteborg <- filter(dat_msb, dat_msb$Region_Code == 14)
 dat_stockholm <- filter(dat_msb, dat_msb$Region_Code == 01)
+
