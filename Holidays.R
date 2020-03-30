@@ -49,4 +49,6 @@ for(i in 1:nrow(dat_stockholm)) {
   }
 }
 
+# Create Holidays General Column
+dat_stockholm$Holidays [dat_stockholm$Christmas_Holidays == TRUE | dat_stockholm$Sport_Holidays == TRUE | dat_stockholm$Easter_Holidays == TRUE | dat_stockholm$Summer_Holidays == TRUE | dat_stockholm$Autumn_Holidays == TRUE ]   <- TRUE
 

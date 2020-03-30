@@ -62,3 +62,5 @@ dat_msb <- na.omit(dat_msb)
 #dat_göteborg <- filter(dat_msb, dat_msb$Region_Code == 14)
 dat_stockholm <- filter(dat_msb, dat_msb$Region_Code == 01)
 
+
+
