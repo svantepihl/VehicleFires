@@ -17,38 +17,41 @@ for(i in 1:nrow(dat_stockholm)) {
         # Check christmas holidays (start of year)
         if(dat_stockholm$Date[i] <= dat_holidays$Christmas_Holidays_End[j]) {
           dat_stockholm$Christmas_Holidays[i] <- TRUE
+          dat_stockholm$Holidays[i] <- TRUE
           break()
         }
         # Check sport holidays
         if(dat_stockholm$Date[i] >= dat_holidays$Sport_Holidays_Start[j] & dat_stockholm$Date[i] <= dat_holidays$Sport_Holidays_End[j]) {
           dat_stockholm$Sport_Holidays[i] <- TRUE
+          dat_stockholm$Holidays[i] <- TRUE
           break()
         }
         # Check Easter holidays
         if(dat_stockholm$Date[i] >= dat_holidays$Easter_Holidays_Start[j] & dat_stockholm$Date[i] <= dat_holidays$Easter_Holidays_End[j]) {
           dat_stockholm$Easter_Holidays[i] <- TRUE
+          dat_stockholm$Holidays[i] <- TRUE
           break()
         }
         # Check Summer holidays
         if(dat_stockholm$Date[i] >= dat_holidays$Summer_Holidays_Start[j] & dat_stockholm$Date[i] <= dat_holidays$Summer_Holidays_End[j]) {
           dat_stockholm$Summer_Holidays[i] <- TRUE
+          dat_stockholm$Holidays[i] <- TRUE
           break()
         }
         # Check autumn holidays
         if(dat_stockholm$Date[i] >= dat_holidays$Autumn_Holidays_Start[j] & dat_stockholm$Date[i] <= dat_holidays$Autumn_Holidays_End[j]) {
           dat_stockholm$Autumn_Holidays[i] <- TRUE
+          dat_stockholm$Holidays[i] <- TRUE
           break()
         }
         # Check christmas holidays (end of year)
         if(dat_stockholm$Date[i] >= dat_holidays$Christmas_Holidays_Start[j]) {
           dat_stockholm$Christmas_Holidays[i] <- TRUE
+          dat_stockholm$Holidays[i] <- TRUE
           break()
         }
       }
     }
   }
 }
-
-# Create Holidays General Column
-dat_stockholm$Holidays [dat_stockholm$Christmas_Holidays == TRUE | dat_stockholm$Sport_Holidays == TRUE | dat_stockholm$Easter_Holidays == TRUE | dat_stockholm$Summer_Holidays == TRUE | dat_stockholm$Autumn_Holidays == TRUE ]   <- TRUE
 
