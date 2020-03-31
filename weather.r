@@ -29,4 +29,8 @@ for(i in 1:nrow(dat_stockholm_relevant)) {
   }
 }
 
+write_csv(dat_stockholm_relevant, path = "exports/dat_after2012.csv")
+
+?write_csv
+
 
