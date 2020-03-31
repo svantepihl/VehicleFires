@@ -1,7 +1,8 @@
+#Create dataset with only years 2012-2019
+dat_subset_12_19 <- filter(dat_stockholm, dat_stockholm$Year >=2012 )
+
+# Select only fires with suspected arson
+dat_subset_12_19 <- filter(dat_subset_12_19, dat_subset_12_19$Reason == "Arson")
+summary(dat_subset_12_19$Holidays)
 
 
-
-x <- filter(dat_stockholm, dat_stockholm$Year == 2017| dat_stockholm$Year == 2018 | dat_stockholm$Year == 2019 )
-x<- filter(x, x$Reason == "Arson")
-x_1 <- filter(x, x$Holidays == TRUE)
-x_2 <- filter( x, x$Holidays == FALSE)
