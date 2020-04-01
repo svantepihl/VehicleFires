@@ -7,11 +7,12 @@ dat_msb <- read_excel("msb.xlsx",
                       col_types = c("date", "date","date", "text", 
                                     "text", "text", "numeric", "text", 
                                     "text"))
-dat_msb <- select(dat_msb, -(Time))
 
 
 #colnames
-colnames(dat_msb) <- c("Date","DateTime", "Type_of_Vehicle", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Type_of_Muncipality", "Reason")
+colnames(dat_msb) <- c("Date", "Time","DateTime","Type_of_Vehicle", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Type_of_Muncipality", "Reason")
+
+dat_msb <- select(dat_msb, -(Time))
 
 #Do we want to have only cars or all type of vehicles? If we want to eliminate the other veichles add code here 
 
