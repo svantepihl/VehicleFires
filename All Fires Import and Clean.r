@@ -23,7 +23,7 @@ colnames(dat_msb) <- c("Date", "Time","DateTime", "Type_of_Vehicle", "Municipali
 dat_msb$Weekday <- weekdays(dat_msb$Date)
 #dat_msb$Hour <- hour(dat_msb$Date)
 #dat_msb$Minute <- minute(dat_msb$Date)
-#dat_msb$Region_Code <- as.integer(as.integer(dat_msb$Municipality_Code)/100)
+dat_msb$Region_Code <- as.integer(as.integer(dat_msb$Municipality_Code)/100)
 #dat_msb$Week <- isoweek(dat_msb$Date)
 
 
