@@ -7,8 +7,7 @@ dat_msb <- read_excel("msb.xlsx",
                       col_types = c("date", "date","date", "text", 
                                     "text", "text", "numeric", "text", 
                                     "text"))
-
-
+dat_msb <- select(dat_msb, -(Time))
 
 #colnames
 colnames(dat_msb) <- c("Date", "Time","DateTime", "Type_of_Vehicle", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Type_of_Muncipality", "Reason")
@@ -71,7 +70,7 @@ dat_msb$Precipitation <- NA
 
 #dat_skåne <- filter(dat_msb, dat_msb$Region_Code == 12)
 #dat_göteborg <- filter(dat_msb, dat_msb$Region_Code == 14)
-dat_stockholm <- filter(dat_msb, dat_msb$Region_Code == 01)
+#dat_stockholm <- filter(dat_msb, dat_msb$Region_Code == 01)
 
 
 
