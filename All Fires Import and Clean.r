@@ -62,6 +62,8 @@ dat_msb$Autumn_Holidays <- as.logical(dat_msb$Autumn_Holidays)
 #dat_göteborg <- filter(dat_msb, dat_msb$Region_Code == 14)
 dat_stockholm <- filter(dat_msb, dat_msb$Region_Code == 01)
 
+rm(dat_msb)
+
 
 
 
