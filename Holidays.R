@@ -1,4 +1,5 @@
-library(readxl)
+require(readxl)
+require(svMisc)
 dat_holidays <- read_excel("Holidays/Skollov.xlsx", 
                            col_types = c("numeric", "text", "text", 
                                          "date", "date", "date", "date", 
@@ -11,6 +12,7 @@ dat_holidays <- na.omit(dat_holidays)
 
 # Loop through datset and check if a valid holiday value
 for(i in 1:nrow(dat_stockholm)) {
+  progress(i/(21899/100))
   for(j in 1:nrow(dat_holidays)){
     if(dat_stockholm$Year[i] == dat_holidays$Year[j]) {
       if(dat_stockholm$Municipality_Code[i] == dat_holidays$Municipality_Code[j]) {
