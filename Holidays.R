@@ -1,5 +1,5 @@
 library(readxl)
-dat_holidays <- read_excel("Holidays/SkollovStockholm.xlsx", 
+dat_holidays <- read_excel("Holidays/Skollov.xlsx", 
                            col_types = c("numeric", "text", "text", 
                                          "date", "date", "date", "date", 
                                          "date", "date", "date", 

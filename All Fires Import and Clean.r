@@ -9,6 +9,7 @@ dat_msb <- read_excel("msb.xlsx",
                                     "text"))
 
 
+
 #colnames
 colnames(dat_msb) <- c("Date", "Time", "Type_of_Vehicle", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Type_of_Muncipality", "Reason")
 
