@@ -4,19 +4,19 @@ require(lubridate)
 
 
 dat_msb <- read_excel("msb.xlsx", 
-                      col_types = c("date", "date","date", "text", 
+                      col_types = c("date", "skip","date", "text", 
                                     "text", "text", "numeric", "text", 
                                     "text"))
 
 
 
 #colnames
-colnames(dat_msb) <- c("Date", "Time","DateTime", "Type_of_Vehicle", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Type_of_Muncipality", "Reason")
+colnames(dat_msb) <- c("Date","DateTime", "Type_of_Vehicle", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Type_of_Muncipality", "Reason")
 
 #Do we want to have only cars or all type of vehicles? If we want to eliminate the other veichles add code here 
 
 #Data cleaning - create separate year, quarter, month, day, hour and minute variables. 
-#dat_msb$Year <- year(dat_msb$Date)
+dat_msb$Year <- year(dat_msb$Date)
 #dat_msb$Quarter <- quarter(dat_msb$Date)
 #dat_msb$Month <- month(dat_msb$Date)
 #dat_msb$Day <- day(dat_msb$Date)
@@ -59,11 +59,6 @@ dat_msb$Summer_Holidays <- as.logical(dat_msb$Summer_Holidays)
 
 dat_msb$Autumn_Holidays <- numeric(length(dat_msb$Date))
 dat_msb$Autumn_Holidays <- as.logical(dat_msb$Autumn_Holidays)
-
-dat_msb$Temperature <- NA
-
-dat_msb$Precipitation <- NA
-
 
 
 

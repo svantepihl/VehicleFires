@@ -1,17 +1,11 @@
 # Load weather for stockholm region 1998-2018
 library(readxl)
-require(svMisc)
 require(tidyverse)
 dat_weather <- read_excel("Weather/Weather.xlsx", 
-                          sheet = "ALL", col_types = c("text", 
-                                                       "text", "date", "numeric", "numeric", 
-                                                       "text"))
+                          sheet = "ALL", col_types = c("skip", 
+                                                       "text", "date", "text", "text", 
+                                                       "skip"))
 
-# Create subset with only data after 2012
-dat_stockholm_relevant <- filter(dat_stockholm, dat_stockholm$Year >=2012 )
-
-# Select only relevant weather data (data after 2012)
-dat_weather_relevant <- subset(dat_weather, year(dat_weather$Date) >= 2012)
 
 
 # Add weather data to observations (takes a while to run)
@@ -27,9 +21,13 @@ dat_weather_relevant <- subset(dat_weather, year(dat_weather$Date) >= 2012)
 #      }
 #    }
 #  }
+#  gc()
 #}
 
-write_csv(dat_stockholm_relevant, path = "exports/dat_after2012.csv")
+
+# Add weather data 
+dat_stockholm <- left_join(dat_stockholm, dat_weather, by=c("Date" = "Date", "Municipality_Code" = "Municipality_Code"))
+
 
 
 
