@@ -1,9 +1,9 @@
 library(readxl)
 dat_holidays <- read_excel("Holidays/SkollovStockholm.xlsx", 
-                                col_types = c("numeric", "text", "text", 
-                                              "date", "date", "date", "date", "date", 
-                                              "date", "date", "date", "date", "date"), 
-                                na = "NA")
+                           col_types = c("numeric", "text", "text", 
+                                         "date", "date", "date", "date", 
+                                         "date", "date", "date", 
+                                         "date", "date", "date"), na = "NA")
 
 
 #Remove NA values
@@ -13,7 +13,7 @@ dat_holidays <- na.omit(dat_holidays)
 for(i in 1:nrow(dat_stockholm)) {
   for(j in 1:nrow(dat_holidays)){
     if(dat_stockholm$Year[i] == dat_holidays$Year[j]) {
-      if(dat_stockholm$Municiplaity_Code[i] == dat_holidays$Municipality_Code[j]) {
+      if(dat_stockholm$Municipality_Code[i] == dat_holidays$Municipality_Code[j]) {
         # Check christmas holidays (start of year)
         if(dat_stockholm$Date[i] <= dat_holidays$Christmas_Holidays_End[j]) {
           dat_stockholm$Christmas_Holidays[i] <- TRUE
@@ -54,4 +54,5 @@ for(i in 1:nrow(dat_stockholm)) {
     }
   }
 }
+
 
