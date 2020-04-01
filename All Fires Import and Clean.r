@@ -9,9 +9,9 @@ dat_msb <- read_excel("msb.xlsx",
                                     "text"))
 
 
-
 #colnames
 colnames(dat_msb) <- c("Date","DateTime", "Type_of_Vehicle", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Type_of_Muncipality", "Reason")
+
 
 #Do we want to have only cars or all type of vehicles? If we want to eliminate the other veichles add code here 
 
@@ -66,7 +66,7 @@ dat_msb$Autumn_Holidays <- as.logical(dat_msb$Autumn_Holidays)
 
 #dat_skåne <- filter(dat_msb, dat_msb$Region_Code == 12)
 #dat_göteborg <- filter(dat_msb, dat_msb$Region_Code == 14)
-dat_stockholm <- filter(dat_msb, dat_msb$Region_Code == 01)
+#dat_stockholm <- filter(dat_msb, dat_msb$Region_Code == 01)
 
 
 
