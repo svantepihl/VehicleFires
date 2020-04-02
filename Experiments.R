@@ -15,36 +15,63 @@ dat_subset_12_19 <- filter(dat_subset_12_19, dat_subset_12_19$Reason == "Arson")
 summary(dat_subset_12_19$Holidays)
 
 
+#Data cleaning- create separate year, quarter, month, day, hour and minute variables. 
+dat_stockholm$Year <- year(dat_stockholm$Date)
+dat_stockholm$Quarter <- quarter(dat_stockholm$Date)
+dat_stockholm$Month <- month(dat_stockholm$Date)
+dat_stockholm$Day <- day(dat_stockholm$Date)
+dat_stockholm$Hour <- hour(dat_stockholm$DateTime)
+dat_stockholm$Minute <- minute(dat_stockholm$DateTime)
+dat_stockholm$Week <- isoweek(dat_stockholm$Date)
+
+
+
+
 # differences between holiday and non-holiday days
-x <- filter(dat_stockholm, dat_stockholm$Year == 2017| dat_stockholm$Year == 2018 | dat_stockholm$Year == 2019 )
-x<- filter(x, x$Reason == "Arson")
-x_1 <- filter(x, x$Sport_Holidays == TRUE)
-x_2 <- filter( x, x$Week == 12)
+dat_stockholm$Year<- year(dat_stockholm$Date)
+dat_stockholm$Weekday <- weekdays(dat_stockholm$Date)
+x <- filter(dat_stockholm, dat_stockholm$Year == 2012| dat_stockholm$Year == 2013 | dat_stockholm$Year == 2014 | dat_stockholm$Year == 2015|dat_stockholm$Year == 2016|dat_stockholm$Year == 2017|dat_stockholm$Year == 2018)
+x<- filter(x, x$Reason == "Arson" & x$Year == 2015)
+x_1 <- filter(x, x$Holidays == TRUE | x$Weekday == "lördag" | x$Weekday == "söndag")
+x_2 <- filter( x, x$Holidays == FALSE & x$Weekday != "lördag" & x$Weekday != "söndag")
+x_3 <- filter(x, x$week == 13)
 
 
+breaks_weekdays = seq(1, 7, by=1)
+labels_weekdays = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
-str(dat_stockholm$Date)
-
-surv_sto <- numeric(dat_stockholm$Date)
-
-
-surv_sto <- Surv(dat_stockholm$Date)
-
-N <- length(dat_stockholm$Date)
-
-for (i in vector N) {difftime(i+1 - i)
-  
-}
-
-difftime(dat_stockholm$Date, dat_stockholm$Date[i+1])
-
-differences <- difftime(dat_stockholm$Time [-1], dat_stockholm$Time[-nrow(dat_stockholm$Date), units = "hours"])
-
-diff <- c(0, difftime(dat_stockholm$Time [-1], dat_stockholm$Time[-length(dat_stockholm$Date), units ="mins"]))                         
-
-length(dat_stockholm$Time)
-dat_stockholm$Time <- na.omit(dat_stockholm$Time)
-
-dat_stockholm$time_correct <-strftime(dat_stockholm$Time, "%H:%M:%S", tz = "CET")
+dat_stockholm %>% 
+  ggplot(aes(Week)) + geom_bar(aes(fill = as.factor(Week)))
 
 
+x %>% 
+  ggplot(aes(Week)) + geom_bar(aes(fill = as.factor(Week)))
+
++
+  scale_x_discrete (breaks=breaks_weekdays, labels = labels_weekdays) + 
+  labs(y = "amount") + scale_fill_discrete(name = "Day", labels = labels_weekdays)
+
+dat_msb$Year <- year(dat_msb$Date)
+dat_msb$Quarter <- quarter(dat_msb$Date)
+dat_msb$Month <- month(dat_msb$Date)
+dat_msb$Day <- day(dat_msb$Date)
+dat_msb$Hour <- hour(dat_msb$DateTime)
+dat_msb$Minute <- minute(dat_msb$DateTime)
+dat_msb$Week <- isoweek(dat_msb$Date)
+
+
+dat_skåne <- filter(dat_msb, dat_msb$Region_Code == 12)
+dat_göteborg <- filter(dat_msb, dat_msb$Region_Code == 14)
+dat_stockholm <- filter(dat_msb, dat_msb$Region_Code == 01)
+ 
+y <- filter(dat_göteborg, dat_göteborg$Year == 2012| dat_göteborg$Year == 2013 | dat_göteborg$Year == 2014 | dat_göteborg$Year == 2015|dat_göteborg$Year == 2016|dat_göteborg$Year == 2017|dat_göteborg$Year == 2018)
+y <- filter(y, y$Reason == "Arson")
+
+y %>%
+  ggplot(aes(Week)) + geom_bar(aes(fill = as.factor(Week)))
+
+z <- filter(dat_skåne, dat_skåne$Year == 2012| dat_skåne$Year == 2013 | dat_skåne$Year == 2014 | dat_skåne$Year == 2015|dat_skåne$Year == 2016|dat_skåne$Year == 2017|dat_skåne$Year == 2018)
+z <- filter(z, z$Reason == "Arson")
+
+z %>%
+  ggplot(aes(Week)) + geom_bar(aes(fill = as.factor(Week)))
