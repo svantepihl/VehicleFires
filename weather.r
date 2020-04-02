@@ -25,7 +25,7 @@ dat_weather <- read_excel("Weather/Weather.xlsx",
 #}
 
 
-# Add weather data 
+# Add weather data for stockholm
 dat_stockholm <- left_join(dat_stockholm, dat_weather, by=c("Date" = "Date", "Municipality_Code" = "Municipality_Code"))
 
 
