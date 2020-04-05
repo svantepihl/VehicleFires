@@ -1,8 +1,8 @@
+require(tidyverse)
 require(survival)
 require(ranger)
 require(ggfortify)
-require(lubridate)
-require(dplyr)
+require(lubridate))
 require(anytime)
 
 
@@ -75,3 +75,17 @@ z <- filter(z, z$Reason == "Arson")
 
 z %>%
   ggplot(aes(Week)) + geom_bar(aes(fill = as.factor(Week)))
+
+dat_huddinge <- filter(dat_msb, dat_msb$Municipality_Code == "0126")
+
+h <- filter(dat_huddinge, dat_huddinge$Year== 2012| dat_huddinge$Year == 2013 | dat_huddinge$Year == 2014 | dat_huddinge$Year == 2015|dat_huddinge$Year == 2016|dat_huddinge$Year == 2017|dat_huddinge$Year == 2018)
+h <- filter(dat_huddinge, dat_huddinge$Month == 08 & dat_huddinge$Year == 2018)
+h %>%
+  ggplot(aes(Day)) + geom_bar(aes(fill = as.factor(Day)))
+
+dat_järfalla <- filter(dat_msb, dat_msb$Municipality_Code == "0123")
+
+j <- filter(dat_järfalla, dat_järfalla$Year== 2012| dat_järfalla$Year == 2013 | dat_järfalla$Year == 2014 | dat_järfalla$Year == 2015|dat_järfalla$Year == 2016|dat_järfalla$Year == 2017|dat_järfalla$Year == 2018)
+j <- filter(dat_järfalla, dat_järfalla$Month == 04 & dat_järfalla$Year == 2018)
+j %>%
+  ggplot(aes(Day)) + geom_bar(aes(fill = as.factor(Day)))
