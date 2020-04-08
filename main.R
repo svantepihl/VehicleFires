@@ -7,3 +7,5 @@ source("Holidays.r")
 #Add weather info
 source("weather.r")
 
+# Add municipality info (colada)
+source("Kolada_Kommuner_Stockholm_import.R")
