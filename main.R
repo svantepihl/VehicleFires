@@ -1,4 +1,4 @@
-# Load data
+# Load data 
 source("all fires Import and Clean.r")
 
 # Add municipality info (colada)

@@ -78,6 +78,8 @@ dat_weather <- read_excel("Weather/Weather.xlsx",
 dat_weather$Date <- as.Date(dat_weather$Date)
 Dates <- left_join(Dates, dat_weather, by=c("Date","Municipality_Code"))
   
+Dates$Temperature <- as.numeric(Dates$Temperature)
+Dates$Precipitation <- as.numeric(Dates$Precipitation)
 
 #### Load holiday info
 # Create columns for holiday info YES/NO
@@ -172,5 +174,5 @@ Dates$Count[is.na(Dates$Count)] <- 0
 dat_fires_stockholm <- left_join(dat_stockholm[ ,-c(6)], Dates, by=c("Date", "Municipality_Code"))
 dat_days_stockholm <- left_join(Dates,Dat_Municipalities[,-6], by=c("Municipality_Code"))
 
-rm(FireCount,dat_holidays,dat_weather,i,j,Municipalities)
+rm(FireCount,dat_holidays,dat_weather,i,j,Municipalities,dat_stockholm)
 
