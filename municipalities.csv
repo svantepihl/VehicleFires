@@ -1,0 +1,291 @@
+"","Municipality_Code","Municipality_Name","Type_of_Municipality_Code","Type_of_Muncipality","Region_Code","Count"
+"1","0188","Norrtälje",6,"Mindre stad/tätort",1,225
+"2","0140","Nykvarn",4,"Pendlingskommun nära större stad",1,55
+"3","0127","Botkyrka",2,"Pendlingskommun nära storstad",1,771
+"4","0162","Danderyd",2,"Pendlingskommun nära storstad",1,40
+"5","0125","Ekerö",2,"Pendlingskommun nära storstad",1,68
+"6","0136","Haninge",2,"Pendlingskommun nära storstad",1,447
+"7","0126","Huddinge",2,"Pendlingskommun nära storstad",1,472
+"8","0123","Järfälla",2,"Pendlingskommun nära storstad",1,377
+"9","0186","Lidingö",2,"Pendlingskommun nära storstad",1,38
+"10","0182","Nacka",2,"Pendlingskommun nära storstad",1,207
+"11","0192","Nynäshamn",2,"Pendlingskommun nära storstad",1,149
+"12","0117","Österåker",2,"Pendlingskommun nära storstad",1,212
+"13","0128","Salem",2,"Pendlingskommun nära storstad",1,78
+"14","0191","Sigtuna",2,"Pendlingskommun nära storstad",1,224
+"15","0163","Sollentuna",2,"Pendlingskommun nära storstad",1,233
+"16","0184","Solna",2,"Pendlingskommun nära storstad",1,148
+"17","0183","Sundbyberg",2,"Pendlingskommun nära storstad",1,132
+"18","0160","Täby",2,"Pendlingskommun nära storstad",1,108
+"19","0138","Tyresö",2,"Pendlingskommun nära storstad",1,121
+"20","0114","Upplands Väsby",2,"Pendlingskommun nära storstad",1,176
+"21","0139","Upplands-Bro",2,"Pendlingskommun nära storstad",1,175
+"22","0115","Vallentuna",2,"Pendlingskommun nära storstad",1,109
+"23","0120","Värmdö",2,"Pendlingskommun nära storstad",1,102
+"24","0187","Vaxholm",2,"Pendlingskommun nära storstad",1,27
+"25","0181","Södertälje",3,"Större stad",1,1016
+"26","0180","Stockholm",1,"Storstäder",1,2688
+"27","0381","Enköping",5,"Lågpendlingskommun nära större stad",3,180
+"28","0382","Östhammar",5,"Lågpendlingskommun nära större stad",3,34
+"29","0319","Älvkarleby",4,"Pendlingskommun nära större stad",3,49
+"30","0331","Heby",4,"Pendlingskommun nära större stad",3,40
+"31","0330","Knivsta",4,"Pendlingskommun nära större stad",3,64
+"32","0360","Tierp",4,"Pendlingskommun nära större stad",3,86
+"33","0305","Håbo",2,"Pendlingskommun nära storstad",3,73
+"34","0380","Uppsala",3,"Större stad",3,851
+"35","0482","Flen",5,"Lågpendlingskommun nära större stad",4,44
+"36","0483","Katrineholm",6,"Mindre stad/tätort",4,110
+"37","0480","Nyköping",6,"Mindre stad/tätort",4,241
+"38","0481","Oxelösund",7,"Pendlingskommun nära mindre tätort",4,28
+"39","0428","Vingåker",7,"Pendlingskommun nära mindre tätort",4,13
+"40","0461","Gnesta",4,"Pendlingskommun nära större stad",4,28
+"41","0486","Strängnäs",4,"Pendlingskommun nära större stad",4,144
+"42","0488","Trosa",4,"Pendlingskommun nära större stad",4,37
+"43","0484","Eskilstuna",3,"Större stad",4,478
+"44","0562","Finspång",5,"Lågpendlingskommun nära större stad",5,69
+"45","0513","Kinda",5,"Lågpendlingskommun nära större stad",5,21
+"46","0583","Motala",5,"Lågpendlingskommun nära större stad",5,115
+"47","0563","Valdemarsvik",5,"Lågpendlingskommun nära större stad",5,26
+"48","0560","Boxholm",7,"Pendlingskommun nära mindre tätort",5,13
+"49","0509","Ödeshög",7,"Pendlingskommun nära mindre tätort",5,40
+"50","0584","Vadstena",7,"Pendlingskommun nära mindre tätort",5,20
+"51","0512","Ydre",7,"Pendlingskommun nära mindre tätort",5,8
+"52","0561","Åtvidaberg",4,"Pendlingskommun nära större stad",5,22
+"53","0586","Mjölby",4,"Pendlingskommun nära större stad",5,89
+"54","0582","Söderköping",4,"Pendlingskommun nära större stad",5,30
+"55","0580","Linköping",3,"Större stad",5,341
+"56","0581","Norrköping",3,"Större stad",5,452
+"57","0682","Nässjö",5,"Lågpendlingskommun nära större stad",6,115
+"58","0687","Tranås",5,"Lågpendlingskommun nära större stad",6,38
+"59","0665","Vaggeryd",5,"Lågpendlingskommun nära större stad",6,50
+"60","0662","Gislaved",8,"Landsbygdskommun",6,82
+"61","0685","Vetlanda",8,"Landsbygdskommun",6,56
+"62","0683","Värnamo",6,"Mindre stad/tätort",6,107
+"63","0686","Eksjö",7,"Pendlingskommun nära mindre tätort",6,42
+"64","0617","Gnosjö",7,"Pendlingskommun nära mindre tätort",6,27
+"65","0684","Sävsjö",7,"Pendlingskommun nära mindre tätort",6,51
+"66","0604","Aneby",4,"Pendlingskommun nära större stad",6,13
+"67","0643","Habo",4,"Pendlingskommun nära större stad",6,30
+"68","0642","Mullsjö",4,"Pendlingskommun nära större stad",6,12
+"69","0680","Jönköping",3,"Större stad",6,399
+"70","0763","Tingsryd",5,"Lågpendlingskommun nära större stad",7,34
+"71","0760","Uppvidinge",5,"Lågpendlingskommun nära större stad",7,24
+"72","0781","Ljungby",6,"Mindre stad/tätort",7,70
+"73","0765","Älmhult",7,"Pendlingskommun nära mindre tätort",7,38
+"74","0767","Markaryd",7,"Pendlingskommun nära mindre tätort",7,37
+"75","0764","Alvesta",4,"Pendlingskommun nära större stad",7,57
+"76","0761","Lessebo",4,"Pendlingskommun nära större stad",7,26
+"77","0780","Växjö",3,"Större stad",7,214
+"78","0884","Vimmerby",8,"Landsbygdskommun",8,26
+"79","0885","Borgholm",9,"Landsbygdskommun med besöksnäring",8,21
+"80","0880","Kalmar",6,"Mindre stad/tätort",8,116
+"81","0882","Oskarshamn",6,"Mindre stad/tätort",8,55
+"82","0883","Västervik",6,"Mindre stad/tätort",8,76
+"83","0862","Emmaboda",7,"Pendlingskommun nära mindre tätort",8,31
+"84","0821","Högsby",7,"Pendlingskommun nära mindre tätort",8,20
+"85","0860","Hultsfred",7,"Pendlingskommun nära mindre tätort",8,40
+"86","0861","Mönsterås",7,"Pendlingskommun nära mindre tätort",8,30
+"87","0840","Mörbylånga",7,"Pendlingskommun nära mindre tätort",8,26
+"88","0881","Nybro",7,"Pendlingskommun nära mindre tätort",8,59
+"89","0834","Torsås",7,"Pendlingskommun nära mindre tätort",8,16
+"90","0980","Gotland",6,"Mindre stad/tätort",9,133
+"91","1082","Karlshamn",6,"Mindre stad/tätort",10,80
+"92","1080","Karlskrona",6,"Mindre stad/tätort",10,124
+"93","1060","Olofström",7,"Pendlingskommun nära mindre tätort",10,41
+"94","1081","Ronneby",7,"Pendlingskommun nära mindre tätort",10,81
+"95","1083","Sölvesborg",7,"Pendlingskommun nära mindre tätort",10,54
+"96","1278","Båstad",9,"Landsbygdskommun med besöksnäring",12,54
+"97","1293","Hässleholm",6,"Mindre stad/tätort",12,150
+"98","1290","Kristianstad",6,"Mindre stad/tätort",12,250
+"99","1286","Ystad",6,"Mindre stad/tätort",12,29
+"100","1272","Bromölla",7,"Pendlingskommun nära mindre tätort",12,41
+"101","1273","Osby",7,"Pendlingskommun nära mindre tätort",12,44
+"102","1256","Östra Göinge",7,"Pendlingskommun nära mindre tätort",12,37
+"103","1291","Simrishamn",7,"Pendlingskommun nära mindre tätort",12,31
+"104","1270","Tomelilla",7,"Pendlingskommun nära mindre tätort",12,44
+"105","1292","Ängelholm",4,"Pendlingskommun nära större stad",12,102
+"106","1277","Åstorp",4,"Pendlingskommun nära större stad",12,68
+"107","1260","Bjuv",4,"Pendlingskommun nära större stad",12,67
+"108","1285","Eslöv",4,"Pendlingskommun nära större stad",12,99
+"109","1284","Höganäs",4,"Pendlingskommun nära större stad",12,29
+"110","1267","Höör",4,"Pendlingskommun nära större stad",12,63
+"111","1266","Hörby",4,"Pendlingskommun nära större stad",12,63
+"112","1276","Klippan",4,"Pendlingskommun nära större stad",12,70
+"113","1282","Landskrona",4,"Pendlingskommun nära större stad",12,207
+"114","1257","Örkelljunga",4,"Pendlingskommun nära större stad",12,64
+"115","1275","Perstorp",4,"Pendlingskommun nära större stad",12,31
+"116","1265","Sjöbo",4,"Pendlingskommun nära större stad",12,40
+"117","1214","Svalöv",4,"Pendlingskommun nära större stad",12,33
+"118","1231","Burlöv",2,"Pendlingskommun nära storstad",12,115
+"119","1261","Kävlinge",2,"Pendlingskommun nära storstad",12,63
+"120","1262","Lomma",2,"Pendlingskommun nära storstad",12,43
+"121","1264","Skurup",2,"Pendlingskommun nära storstad",12,40
+"122","1230","Staffanstorp",2,"Pendlingskommun nära storstad",12,38
+"123","1263","Svedala",2,"Pendlingskommun nära storstad",12,63
+"124","1287","Trelleborg",2,"Pendlingskommun nära storstad",12,76
+"125","1233","Vellinge",2,"Pendlingskommun nära storstad",12,37
+"126","1283","Helsingborg",3,"Större stad",12,690
+"127","1281","Lund",3,"Större stad",12,181
+"128","1280","Malmö",1,"Storstäder",12,1407
+"129","1315","Hylte",5,"Lågpendlingskommun nära större stad",13,32
+"130","1382","Falkenberg",6,"Mindre stad/tätort",13,164
+"131","1383","Varberg",6,"Mindre stad/tätort",13,157
+"132","1381","Laholm",4,"Pendlingskommun nära större stad",13,83
+"133","1384","Kungsbacka",2,"Pendlingskommun nära storstad",13,141
+"134","1380","Halmstad",3,"Större stad",13,349
+"135","1466","Herrljunga",5,"Lågpendlingskommun nära större stad",14,26
+"136","1484","Lysekil",5,"Lågpendlingskommun nära större stad",14,59
+"137","1452","Tranemo",5,"Lågpendlingskommun nära större stad",14,25
+"138","1485","Uddevalla",5,"Lågpendlingskommun nära större stad",14,204
+"139","1491","Ulricehamn",5,"Lågpendlingskommun nära större stad",14,69
+"140","1492","Åmål",8,"Landsbygdskommun",14,29
+"141","1460","Bengtsfors",8,"Landsbygdskommun",14,18
+"142","1438","Dals-Ed",8,"Landsbygdskommun",14,18
+"143","1427","Sotenäs",9,"Landsbygdskommun med besöksnäring",14,27
+"144","1486","Strömstad",9,"Landsbygdskommun med besöksnäring",14,73
+"145","1435","Tanum",9,"Landsbygdskommun med besöksnäring",14,43
+"146","1499","Falköping",6,"Mindre stad/tätort",14,98
+"147","1494","Lidköping",6,"Mindre stad/tätort",14,109
+"148","1493","Mariestad",6,"Mindre stad/tätort",14,66
+"149","1496","Skövde",6,"Mindre stad/tätort",14,83
+"150","1445","Essunga",7,"Pendlingskommun nära mindre tätort",14,24
+"151","1471","Götene",7,"Pendlingskommun nära mindre tätort",14,30
+"152","1447","Gullspång",7,"Pendlingskommun nära mindre tätort",14,21
+"153","1497","Hjo",7,"Pendlingskommun nära mindre tätort",14,18
+"154","1446","Karlsborg",7,"Pendlingskommun nära mindre tätort",14,13
+"155","1461","Mellerud",7,"Pendlingskommun nära mindre tätort",14,38
+"156","1430","Munkedal",7,"Pendlingskommun nära mindre tätort",14,42
+"157","1421","Orust",7,"Pendlingskommun nära mindre tätort",14,39
+"158","1495","Skara",7,"Pendlingskommun nära mindre tätort",14,73
+"159","1472","Tibro",7,"Pendlingskommun nära mindre tätort",14,29
+"160","1498","Tidaholm",7,"Pendlingskommun nära mindre tätort",14,38
+"161","1419","Tjörn",7,"Pendlingskommun nära mindre tätort",14,45
+"162","1473","Töreboda",7,"Pendlingskommun nära mindre tätort",14,30
+"163","1470","Vara",7,"Pendlingskommun nära mindre tätort",14,63
+"164","1442","Vårgårda",7,"Pendlingskommun nära mindre tätort",14,39
+"165","1439","Färgelanda",4,"Pendlingskommun nära större stad",14,24
+"166","1444","Grästorp",4,"Pendlingskommun nära större stad",14,17
+"167","1463","Mark",4,"Pendlingskommun nära större stad",14,91
+"168","1465","Svenljunga",4,"Pendlingskommun nära större stad",14,40
+"169","1487","Vänersborg",4,"Pendlingskommun nära större stad",14,128
+"170","1440","Ale",2,"Pendlingskommun nära storstad",14,119
+"171","1489","Alingsås",2,"Pendlingskommun nära storstad",14,78
+"172","1443","Bollebygd",2,"Pendlingskommun nära storstad",14,45
+"173","1401","Härryda",2,"Pendlingskommun nära storstad",14,136
+"174","1482","Kungälv",2,"Pendlingskommun nära storstad",14,117
+"175","1441","Lerum",2,"Pendlingskommun nära storstad",14,128
+"176","1462","Lilla Edet",2,"Pendlingskommun nära storstad",14,82
+"177","1481","Mölndal",2,"Pendlingskommun nära storstad",14,153
+"178","1407","Öckerö",2,"Pendlingskommun nära storstad",14,18
+"179","1402","Partille",2,"Pendlingskommun nära storstad",14,118
+"180","1415","Stenungsund",2,"Pendlingskommun nära storstad",14,63
+"181","1490","Borås",3,"Större stad",14,415
+"182","1488","Trollhättan",3,"Större stad",14,252
+"183","1480","Göteborg",1,"Storstäder",14,1829
+"184","1781","Kristinehamn",5,"Lågpendlingskommun nära större stad",17,114
+"185","1762","Munkfors",5,"Lågpendlingskommun nära större stad",17,14
+"186","1785","Säffle",5,"Lågpendlingskommun nära större stad",17,60
+"187","1765","Årjäng",8,"Landsbygdskommun",17,47
+"188","1784","Arvika",8,"Landsbygdskommun",17,85
+"189","1782","Filipstad",8,"Landsbygdskommun",17,67
+"190","1783","Hagfors",8,"Landsbygdskommun",17,36
+"191","1766","Sunne",8,"Landsbygdskommun",17,43
+"192","1737","Torsby",8,"Landsbygdskommun",17,46
+"193","1730","Eda",9,"Landsbygdskommun med besöksnäring",17,33
+"194","1760","Storfors",7,"Pendlingskommun nära mindre tätort",17,13
+"195","1763","Forshaga",4,"Pendlingskommun nära större stad",17,25
+"196","1764","Grums",4,"Pendlingskommun nära större stad",17,40
+"197","1761","Hammarö",4,"Pendlingskommun nära större stad",17,16
+"198","1715","Kil",4,"Pendlingskommun nära större stad",17,43
+"199","1780","Karlstad",3,"Större stad",17,211
+"200","1882","Askersund",5,"Lågpendlingskommun nära större stad",18,38
+"201","1860","Laxå",5,"Lågpendlingskommun nära större stad",18,40
+"202","1885","Lindesberg",5,"Lågpendlingskommun nära större stad",18,67
+"203","1863","Hällefors",8,"Landsbygdskommun",18,32
+"204","1883","Karlskoga",6,"Mindre stad/tätort",18,95
+"205","1862","Degerfors",7,"Pendlingskommun nära mindre tätort",18,32
+"206","1864","Ljusnarsberg",7,"Pendlingskommun nära mindre tätort",18,20
+"207","1861","Hallsberg",4,"Pendlingskommun nära större stad",18,42
+"208","1881","Kumla",4,"Pendlingskommun nära större stad",18,66
+"209","1814","Lekeberg",4,"Pendlingskommun nära större stad",18,37
+"210","1884","Nora",4,"Pendlingskommun nära större stad",18,30
+"211","1880","Örebro",3,"Större stad",18,542
+"212","1983","Köping",5,"Lågpendlingskommun nära större stad",19,86
+"213","1981","Sala",5,"Lågpendlingskommun nära större stad",19,68
+"214","1984","Arboga",7,"Pendlingskommun nära mindre tätort",19,47
+"215","1982","Fagersta",7,"Pendlingskommun nära mindre tätort",19,41
+"216","1960","Kungsör",7,"Pendlingskommun nära mindre tätort",19,31
+"217","1962","Norberg",7,"Pendlingskommun nära mindre tätort",19,38
+"218","1904","Skinnskatteberg",7,"Pendlingskommun nära mindre tätort",19,18
+"219","1961","Hallstahammar",4,"Pendlingskommun nära större stad",19,68
+"220","1907","Surahammar",4,"Pendlingskommun nära större stad",19,37
+"221","1980","Västerås",3,"Större stad",19,761
+"222","2085","Ludvika",8,"Landsbygdskommun",20,79
+"223","2062","Mora",8,"Landsbygdskommun",20,73
+"224","2021","Vansbro",8,"Landsbygdskommun",20,36
+"225","2039","Älvdalen",9,"Landsbygdskommun med besöksnäring",20,44
+"226","2029","Leksand",9,"Landsbygdskommun med besöksnäring",20,39
+"227","2023","Malung-Sälen",9,"Landsbygdskommun med besöksnäring",20,50
+"228","2034","Orsa",9,"Landsbygdskommun med besöksnäring",20,27
+"229","2031","Rättvik",9,"Landsbygdskommun med besöksnäring",20,48
+"230","2084","Avesta",6,"Mindre stad/tätort",20,68
+"231","2080","Falun",6,"Mindre stad/tätort",20,189
+"232","2083","Hedemora",7,"Pendlingskommun nära mindre tätort",20,49
+"233","2061","Smedjebacken",7,"Pendlingskommun nära mindre tätort",20,40
+"234","2026","Gagnef",4,"Pendlingskommun nära större stad",20,23
+"235","2082","Säter",4,"Pendlingskommun nära större stad",20,55
+"236","2081","Borlänge",3,"Större stad",20,221
+"237","2104","Hofors",5,"Lågpendlingskommun nära större stad",21,19
+"238","2101","Ockelbo",5,"Lågpendlingskommun nära större stad",21,20
+"239","2181","Sandviken",5,"Lågpendlingskommun nära större stad",21,112
+"240","2183","Bollnäs",8,"Landsbygdskommun",21,69
+"241","2161","Ljusdal",8,"Landsbygdskommun",21,58
+"242","2121","Ovanåker",8,"Landsbygdskommun",21,26
+"243","2182","Söderhamn",8,"Landsbygdskommun",21,92
+"244","2184","Hudiksvall",6,"Mindre stad/tätort",21,142
+"245","2132","Nordanstig",7,"Pendlingskommun nära mindre tätort",21,36
+"246","2180","Gävle",3,"Större stad",21,355
+"247","2260","Ånge",8,"Landsbygdskommun",22,34
+"248","2282","Kramfors",8,"Landsbygdskommun",22,110
+"249","2283","Sollefteå",8,"Landsbygdskommun",22,114
+"250","2280","Härnösand",6,"Mindre stad/tätort",22,123
+"251","2284","Örnsköldsvik",6,"Mindre stad/tätort",22,151
+"252","2262","Timrå",4,"Pendlingskommun nära större stad",22,146
+"253","2281","Sundsvall",3,"Större stad",22,400
+"254","2326","Berg",5,"Lågpendlingskommun nära större stad",23,23
+"255","2305","Bräcke",5,"Lågpendlingskommun nära större stad",23,30
+"256","2303","Ragunda",8,"Landsbygdskommun",23,22
+"257","2313","Strömsund",8,"Landsbygdskommun",23,46
+"258","2321","Åre",9,"Landsbygdskommun med besöksnäring",23,23
+"259","2361","Härjedalen",9,"Landsbygdskommun med besöksnäring",23,40
+"260","2309","Krokom",4,"Pendlingskommun nära större stad",23,33
+"261","2380","Östersund",3,"Större stad",23,115
+"262","2409","Robertsfors",5,"Lågpendlingskommun nära större stad",24,18
+"263","2404","Vindeln",5,"Lågpendlingskommun nära större stad",24,22
+"264","2463","Åsele",8,"Landsbygdskommun",24,8
+"265","2425","Dorotea",8,"Landsbygdskommun",24,7
+"266","2481","Lycksele",8,"Landsbygdskommun",24,42
+"267","2418","Malå",8,"Landsbygdskommun",24,2
+"268","2417","Norsjö",8,"Landsbygdskommun",24,12
+"269","2422","Sorsele",8,"Landsbygdskommun",24,4
+"270","2462","Vilhelmina",8,"Landsbygdskommun",24,29
+"271","2421","Storuman",9,"Landsbygdskommun med besöksnäring",24,16
+"272","2482","Skellefteå",6,"Mindre stad/tätort",24,195
+"273","2403","Bjurholm",4,"Pendlingskommun nära större stad",24,10
+"274","2401","Nordmaling",4,"Pendlingskommun nära större stad",24,31
+"275","2460","Vännäs",4,"Pendlingskommun nära större stad",24,30
+"276","2480","Umeå",3,"Större stad",24,214
+"277","2560","Älvsbyn",5,"Lågpendlingskommun nära större stad",25,37
+"278","2582","Boden",5,"Lågpendlingskommun nära större stad",25,123
+"279","2505","Arvidsjaur",8,"Landsbygdskommun",25,20
+"280","2523","Gällivare",8,"Landsbygdskommun",25,67
+"281","2583","Haparanda",8,"Landsbygdskommun",25,48
+"282","2510","Jokkmokk",8,"Landsbygdskommun",25,24
+"283","2514","Kalix",8,"Landsbygdskommun",25,116
+"284","2513","Överkalix",8,"Landsbygdskommun",25,29
+"285","2518","Övertorneå",8,"Landsbygdskommun",25,17
+"286","2521","Pajala",8,"Landsbygdskommun",25,12
+"287","2506","Arjeplog",9,"Landsbygdskommun med besöksnäring",25,17
+"288","2584","Kiruna",6,"Mindre stad/tätort",25,66
+"289","2581","Piteå",6,"Mindre stad/tätort",25,113
+"290","2580","Luleå",3,"Större stad",25,251

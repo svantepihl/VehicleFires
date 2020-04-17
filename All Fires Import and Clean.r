@@ -3,13 +3,12 @@ require(readxl)
 require(lubridate)
 require(svMisc)
 
-dat_msb <- read_excel("msb.xlsx", 
-                      col_types = c("date", "skip","date", "text", 
-                                    "text", "text", "numeric", "text", 
-                                    "text"))
+dat_msb <- read_excel("msb_2019.xlsx", col_types = c("date", 
+                                                     "skip", "date", "text", "skip", "text", 
+                                                     "text", "numeric", "text"))
 
 #colnames
-colnames(dat_msb) <- c("Date","DateTime", "Type_of_Vehicle", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Type_of_Muncipality", "Reason")
+colnames(dat_msb) <- c("Date","DateTime", "isCar", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Reason")
 
 
 
@@ -25,16 +24,16 @@ dat_msb$Weekday <- weekdays(dat_msb$Date)
 dat_msb$Region_Code <- as.integer(as.integer(dat_msb$Municipality_Code)/100)
 #dat_msb$Week <- isoweek(dat_msb$Date)
 dat_msb$Date <- as.Date(dat_msb$Date)
-
-
+dat_msb$isCar[dat_msb$isCar=="Ja"] <- 1
+dat_msb$isCar[dat_msb$isCar=="Nej"] <- 0
 
 
 # We rename the Reasons behind the carfires to english
-dat_msb$Reason [dat_msb$Reason != "Fel i utrustning"& dat_msb$Reason != "Avsiktlig brand"& dat_msb$Reason != "Okänd"] <-"Other Reason"
-dat_msb$Reason [dat_msb$Reason == "Avsiktlig brand"] <- "Arson"
-dat_msb$Reason [dat_msb$Reason == "Fel i utrustning"] <- "Technical Malfunctioning"
-dat_msb$Reason [dat_msb$Reason == "Okänd"] <- "Unknown"
-
+dat_msb$Reason[dat_msb$Reason != "Fel i utrustning"& dat_msb$Reason != "Avsiktlig brand"& dat_msb$Reason != "Okänd"] <-"Other Reason"
+dat_msb$Reason[dat_msb$Reason == "Avsiktlig brand"] <- "Arson"
+dat_msb$Reason[dat_msb$Reason == "Fel i utrustning"] <- "Technical Malfunctioning"
+dat_msb$Reason[dat_msb$Reason == "Okänd"] <- "Unknown"
+dat_msb$Reason <- as.factor(dat_msb$Reason)
 
 #Remove NA values
 dat_msb <- na.omit(dat_msb)
@@ -44,10 +43,10 @@ dat_msb$Count <- 1
 dat_msb <- subset(dat_msb, year(dat_msb$Date)>2011)
 
 # Extract municipality info
-Dat_Municipalities <- aggregate(Count~Municipality_Code+Municipality_Name+Type_of_Municipality_Code+Type_of_Muncipality+Region_Code,dat_msb, FUN = sum)
+Dat_Municipalities <- aggregate(Count~Municipality_Code+Municipality_Name+Type_of_Municipality_Code+Region_Code,dat_msb, FUN = sum)
 
 #Remove municipality info from dat_msb
-dat_msb <- dat_msb[,-c(5,6,7,9,10)]
+dat_msb <- dat_msb[,-c(5,6,8,9)]
 
 Municipalities <- c("0127", "0162", "0125", "0136", "0126", "0123","0186", "0182","0188","0140","0192", "0128", "0191", "0163", "0184", "0180", "0183","0181", "0138", "0160", "0139", "0114", "0115", "0187", "0120","0117")
 

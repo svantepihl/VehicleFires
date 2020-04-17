@@ -20,3 +20,12 @@ colnames(Kommuner_stockholm) <- c("Municipality", "Year", "Number of Expert Expl
                                   "Percentage of 16-64 with Low-Income", "Amount of Benefits claimed", "Percentage of 16-24 in Long Term Unemployment", "Median Income 20+","Percentage of Residents Born Outside Sweden", 
                                   "Percentage of Adults Claiming Low-Income Benefits for a Long Period of Time")  
 
+
+#Add data about inhabitants
+dat_inhabitants <- read_excel("kommuner_invånare.xlsx")
+
+dat_inhabitants <- data.frame(dat_inhabitants[1:1], stack(dat_inhabitants[2:ncol(dat_inhabitants)]))
+colnames(dat_inhabitants) <- c("Municipality_Name","Inhabitants", "Year")
+left_join(dat_inhabitants,Dat_Municipalities[ ,c(1,2)])
+
+
