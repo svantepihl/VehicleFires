@@ -26,6 +26,6 @@ dat_inhabitants <- read_excel("kommuner_invånare.xlsx")
 
 dat_inhabitants <- data.frame(dat_inhabitants[1:1], stack(dat_inhabitants[2:ncol(dat_inhabitants)]))
 colnames(dat_inhabitants) <- c("Municipality_Name","Inhabitants", "Year")
-left_join(dat_inhabitants,Dat_Municipalities[ ,c(1,2)])
+dat_inhabitants <- left_join(dat_inhabitants,Dat_Municipalities[ ,c(1,2)])
 
 
