@@ -22,7 +22,7 @@ colnames(Kommuner_stockholm) <- c("Municipality", "Year", "Number of Expert Expl
 
 
 #Add data about inhabitants
-dat_inhabitants <- read_excel("alla invanare.xlsx", 
+dat_inhabitants <- read_excel("Kommundata/alla invanare.xlsx", 
                                                skip = 1)
 
 dat_inhabitants <- data.frame(dat_inhabitants[1:2], stack(dat_inhabitants[3:ncol(dat_inhabitants)]))
@@ -34,11 +34,11 @@ dat_inhabitants <- reshape(data=dat_inhabitants,idvar= c("Municipality", "Year")
                            direction="wide")
 
 dat_inhabitants$antal_20_30 <- rowSums (dat_inhabitants[,6:16])
-dat_inhabitants$andel_20_30 <- (dat_inhabitants$antal_20_30/dat_inhabitants$`Values.Invånare  totalt, antal`) *100
+dat_inhabitants$andel_20_30 <- (dat_inhabitants$antal_20_30/dat_inhabitants$`Values.Förändring i antal invånare sen föregående år, andel (%)`) *100
 dat_inhabitants <- dat_inhabitants [, -c(6:16,18)]
 colnames(dat_inhabitants) <- c("Municipality", "Year", "Yearly_Change_in_Number_of_Residents_since_Previous_Year", "Total_Number_of_Residents", "Percentage_of_Residents_under_Twenty", "Percentage_of_residents_over_Sixty_Five", "Percentage_of_Residents_between_Twenty_and_Thirty" )
 
-Number_of_Fires <- data.frame( dat_msb %>%
+Number_of_Fires <- data.frame(dat_msb_for_Kolada %>%
   group_by(year(Date), Municipality_Code, Municipality_Name) %>%
   count())
 

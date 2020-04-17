@@ -3,7 +3,7 @@ require(readxl)
 require(lubridate)
 require(svMisc)
 
-dat_msb <- read_excel("msb_2019.xlsx", col_types = c("date", 
+dat_msb <- read_excel("MSB/msb_2019.xlsx", col_types = c("date", 
                                                      "skip", "date", "text", "skip", "text", 
                                                      "text", "numeric", "text"))
 
@@ -43,7 +43,12 @@ dat_msb$Count <- 1
 
 Dat_Municipalities <- aggregate(Count~Municipality_Code+Municipality_Name+Type_of_Municipality_Code+Region_Code,dat_msb, FUN = sum)
 
+#For use in Kolada
 
+dat_msb_for_Kolada <- dat_msb
+
+
+#Stockholm
 dat_msb <- subset(dat_msb, year(dat_msb$Date)>2011)
 
 

@@ -2,7 +2,7 @@ require(tidyverse)
 require(readxl)
 require(lubridate)
 
-dat_2018 <- read_excel("dat_msb_2018.xlsx")
+dat_2018 <- read_excel("MSB/dat_msb_2018.xlsx")
 
 colnames(dat_2018) <- c("Code", "Date", "Time", "Origin_of_Fire", "Consequence_of_Fire", 
                         "Region_Code", "Region_Name","Municiplaity_Code", "Municipality_Name",
