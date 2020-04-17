@@ -38,12 +38,14 @@ dat_msb$Reason <- as.factor(dat_msb$Reason)
 #Remove NA values
 dat_msb <- na.omit(dat_msb)
 
-
+# Extract municipality info
 dat_msb$Count <- 1
+
+Dat_Municipalities <- aggregate(Count~Municipality_Code+Municipality_Name+Type_of_Municipality_Code+Region_Code,dat_msb, FUN = sum)
+
+
 dat_msb <- subset(dat_msb, year(dat_msb$Date)>2011)
 
-# Extract municipality info
-Dat_Municipalities <- aggregate(Count~Municipality_Code+Municipality_Name+Type_of_Municipality_Code+Region_Code,dat_msb, FUN = sum)
 
 #Remove municipality info from dat_msb
 dat_msb <- dat_msb[,-c(5,6,8,9)]
