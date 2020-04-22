@@ -50,3 +50,4 @@ dat_inhabitants <- dat_inhabitants[-c(45:66),]
 dat_inhabitants$Number_of_Fires [is.na(dat_inhabitants$Number_of_Fires)]<- 0
 dat_inhabitants$Number_of_Fires_per_Thousand <- (dat_inhabitants$Number_of_Fires/dat_inhabitants$Total_Number_of_Residents) * 1000
 
+

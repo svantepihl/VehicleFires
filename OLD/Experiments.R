@@ -2,9 +2,11 @@ require(tidyverse)
 require(survival)
 require(ranger)
 require(ggfortify)
-require(lubridate))
+require(lubridate)
 require(anytime)
-
+require(forecast)
+require(urca)
+require(stats)
 
 #Create dataset with only years 2012-2019
 dat_subset_12_19 <- filter(dat_stockholm, dat_stockholm$Year >=2012 )
@@ -89,3 +91,69 @@ j <- filter(dat_järfalla, dat_järfalla$Year== 2012| dat_järfalla$Year == 2013
 j <- filter(dat_järfalla, dat_järfalla$Month == 04 & dat_järfalla$Year == 2018)
 j %>%
   ggplot(aes(Day)) + geom_bar(aes(fill = as.factor(Day)))
+
+
+#ExplorTORY TIME series 
+mega_list_2 <- split.data.frame(dat_days_stockholm, as.factor(dat_days_stockholm$Municipality_Name))
+sums <- means <- lapply(mega_list_2, "[", ,12) %>% lapply(sum)
+means <- lapply(mega_list_2, "[", ,12) %>% lapply(mean)
+means_dat <- as.data.frame(means)
+means_dat <- t(means_dat)
+colnames(means_dat) <- "average_number_fires"
+
+mega_list_2$Botkyrka[12]%>% ts(frequency = 365)%>%auto.arima()
+mega_list_2 [[1]] [12] %>% ts(frequency = 365) %>% auto.arima()
+mega_list_2 [[2]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[3]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[4]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[5]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[6]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[7]] [12] %>% ts(frequency = 365) %>% auto.arima()
+mega_list_2 [[8]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[9]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[10]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[11]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[12]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[13]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[14]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[15]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[16]] [12] %>% ts(frequency = 365) %>% auto.arima()
+mega_list_2 [[17]] [12] %>% ts(frequency = 365) %>% auto.arima()
+mega_list_2 [[18]] [12] %>% ts(frequency = 365) %>% auto.arima()
+mega_list_2 [[19]] [12] %>% ts(frequency = 365) %>% auto.arima()
+mega_list_2 [[20]] [12] %>% ts(frequency = 365) %>% auto.arima()
+mega_list_2 [[21]] [12] %>% ts(frequency = 365) %>% auto.arima()
+mega_list_2 [[22]] [12] %>% ts(frequency = 365) %>% auto.arima()
+mega_list_2 [[23]] [12] %>% ts(frequency = 365) %>% auto.arima()
+mega_list_2 [[24]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[25]] [12] %>% ts() %>% auto.arima()
+mega_list_2 [[26]] [12] %>% ts(frequency = 365) %>% auto.arima()
+
+                                              
+mega_list_2 [[1]] [12] %>% ts(frequency = 365) %>% decompose() %>% plot()
+mega_list_2 [[1]] [12] %>% ts(frequency = 365) %>% diff() %>% acf()
+
+str(dat_days_stockholm)
+
+# exploratory models
+dat_days_stockholm$Municipality_Name <- as.factor(dat_days_stockholm$Municipality_Name)
+str(dat_days_stockholm)
+
+a <- lm (dat_days_stockholm$Count.x ~ dat_days_stockholm$Municipality_Name + dat_days_stockholm$Temperature + dat_days_stockholm$Precipitation + dat_days_stockholm$Holidays + dat_days_stockholm$Weekday, dat_days_stockholm )
+summary(a)
+a$fitted.values
+dat_days_stockholm$Count.x
+plot(a$residuals)
+cor(a$residuals, diff(a$residuals))
+min(dat_days_stockholm$Count.x)
+plot(dat_days_stockholm$Count.x)
+cor(as.numeric(dat_days_stockholm$Municipality_Name), a$residuals)
+dat_days_stockholm$ln_count <- log(dat_days_stockholm$Count.x)
+dat_days_stockholm$ln_count[dat_days_stockholm$ln_count < 0] <- 0
+var(dat_days_stockholm$Count.x)
+mean(dat_days_stockholm$Count.x)
+
+min(dat_days_stockholm$ln_count)
+re <- diff(a$residuals)
+cor(a$residuals[2:300], re[1:299])
+plot(a$residuals [1:200])
