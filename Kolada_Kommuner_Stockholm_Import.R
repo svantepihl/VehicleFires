@@ -50,4 +50,16 @@ dat_inhabitants <- dat_inhabitants[-c(45:66),]
 dat_inhabitants$Number_of_Fires [is.na(dat_inhabitants$Number_of_Fires)]<- 0
 dat_inhabitants$Number_of_Fires_per_Thousand <- (dat_inhabitants$Number_of_Fires/dat_inhabitants$Total_Number_of_Residents) * 1000
 
+dat_inhabitants$Municipality_code<- as.integer(dat_inhabitants$Municipality_code)
+dat_inhabitants_kolada <- filter(dat_inhabitants, Municipality_code < 200)
+dat_inhabitants_kolada$Year <- dat_inhabitants_kolada$Year%>% as.character()%>%as.integer()
+dat_days_stockholm_kolada <- filter(dat_inhabitants_kolada, dat_inhabitants_kolada$Year>2011 & dat_inhabitants_kolada$Year < 2019)
+
+Kommuner_stockholm$Year <- Kommuner_stockholm$Year%>% as.character()%>%as.integer()
+Kommuner_stockholm <- filter(Kommuner_stockholm, Kommuner_stockholm$Year > 2011 & Kommuner_stockholm$Year < 2019)
+rm(dat_inhabitants, dat_inhabitants_kolada)
+
+dat_stockholm_kolada <- left_join(Kommuner_stockholm, dat_days_stockholm_kolada)
+
+rm(Kommuner_stockholm, dat_days_stockholm_kolada, dat_msb_for_Kolada)
 

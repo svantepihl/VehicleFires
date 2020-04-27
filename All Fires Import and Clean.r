@@ -14,15 +14,15 @@ colnames(dat_msb) <- c("Date","DateTime", "isCar", "Municipality_Code", "Municip
 
 #Do we want to have only cars or all type of vehicles? If we want to eliminate the other veichles add code here 
 #Data cleaning - create separate year, quarter, month, day, hour and minute variables. 
-#dat_msb$Year <- year(dat_msb$Date)
+#at_msb$Year <- year(dat_msb$Date)
 #dat_msb$Quarter <- quarter(dat_msb$Date)
-#dat_msb$Month <- month(dat_msb$Date)
+dat_msb$Month <- month(dat_msb$Date)
 #dat_msb$Day <- day(dat_msb$Date)
 dat_msb$Weekday <- weekdays(dat_msb$Date)
 #dat_msb$Hour <- hour(dat_msb$Date)
 #dat_msb$Minute <- minute(dat_msb$Date)
 dat_msb$Region_Code <- as.integer(as.integer(dat_msb$Municipality_Code)/100)
-#dat_msb$Week <- isoweek(dat_msb$Date)
+dat_msb$Week <- isoweek(dat_msb$Date)
 dat_msb$Date <- as.Date(dat_msb$Date)
 dat_msb$isCar[dat_msb$isCar=="Ja"] <- 1
 dat_msb$isCar[dat_msb$isCar=="Nej"] <- 0
@@ -180,5 +180,5 @@ Dates$Count[is.na(Dates$Count)] <- 0
 dat_fires_stockholm <- left_join(dat_stockholm[ ,-c(6)], Dates, by=c("Date", "Municipality_Code"))
 dat_days_stockholm <- left_join(Dates,Dat_Municipalities[,-6], by=c("Municipality_Code"))
 
-rm(FireCount,dat_holidays,dat_weather,i,j,Municipalities,dat_stockholm)
+rm(FireCount,dat_holidays,dat_weather,i,j,Municipalities,dat_stockholm, dat_msb)
 
