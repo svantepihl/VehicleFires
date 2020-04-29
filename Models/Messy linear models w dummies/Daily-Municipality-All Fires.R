@@ -4,63 +4,35 @@ require(MASS)
 require(lmtest)
 require(xts)
 
-# cleaning  necessary for municipality based models and time-series model , non-panel data. Use this part of cleaning also for the INGARCH models.
-colnames(dat_days_stockholm) [12] <- "Number_of_Fires"
-colnames(dat_days_stockholm)[16] <- "Region_Code"
-
-dat_days_stockholm$Week <- isoweek(dat_days_stockholm$Date)
-dat_days_stockholm$Year <- year(dat_days_stockholm$Date)
-dat_days_stockholm$Month <- month(dat_days_stockholm$Date)
-dat_days_stockholm$Quarter <- quarter(dat_days_stockholm$Date)
-
-split(dat_days_stockholm, as.factor(dat_days_stockholm$Weekday)) %>%lapply( "[", ,12)%>%lapply(mean)
-split(dat_days_stockholm, as.factor(dat_days_stockholm$Month)) %>%lapply( "[", ,12)%>%lapply(mean)
-split(dat_days_stockholm, as.factor(dat_days_stockholm$Quarter)) %>%lapply( "[", ,12)%>%lapply(mean)
-
-dat_days_stockholm$first_quarter <- 0
-dat_days_stockholm$second_quarter <- 0
-dat_days_stockholm$third_quarter <-0
-dat_days_stockholm$fourth_quarter <- 0
-dat_days_stockholm$weekend <- 0
-
-dat_days_stockholm [dat_days_stockholm$Quarter == 1, "first_quarter"] <- 1
-dat_days_stockholm [dat_days_stockholm$Quarter == 2, "second_quarter"] <- 1
-dat_days_stockholm [dat_days_stockholm$Quarter == 3, "third_quarter"] <- 1
-dat_days_stockholm [dat_days_stockholm$Quarter == 4, "fourth_quarter"] <- 1
-dat_days_stockholm [dat_days_stockholm$Weekday == "lördag" | dat_days_stockholm$Weekday == "söndag", "weekend"] <- 1
+mega_list <- split(dat_days_stockholm, dat_days_stockholm$Municipality_Name)
 
 
-
-
-a <- split(dat_days_stockholm, dat_days_stockholm$Municipality_Name)
-
-
-Botkyrka <- a$Botkyrka # Neighbours:Nynäshamn, Haninge, Huddinge, Stockholm, Ekerö, Salem, Södertälje
-Danderyd <- a$Danderyd # Neighbours:Sollentuna, Täby, Solna, Växholm, Lidingö, Stockholm
-Ekerö <- a$Ekerö # Neighbours: Upplands-Bro, Järfälla, Stockholm, Botkyrka, Salem, Södertälje
-Haninge <-a$Haninge # Neighbours: Tyresö, Huddinge, Botkykrka, Nynäshämn
-Huddinge <- a$Huddinge # Neighbours: Botkyrka, Stockholm, Tyresö, Haninge
-Järfälla <-a$Järfälla # Neighbours: Upplands Bro, Upplands Väsby, Sollentuna, Sundbyberg, Stockholm, Ekerö
-Lidingö <- a$Lidingö # Neighbours: Vaxholm, Österåker, Täby, Danderyd, Stocholm, Nacka, Värmdö
-Nacka <- a$Nacka # Neighbours: Värmdö, Vaxholm, Lidingö, Stockholm, Tyresö
-Norrtälje <- a$Norrtälje # Neighbours: Sigtuna, Vallentuna, Österåker
-Nykvarn <- a$Nykvarn # Neighbours: Södertälje
-Nynäshamn <- a$Nynäshamn # Neighbours: Haninge, Botkyrka, Södertälje
-Salem <- a$Salem # Neighbours: Södertälje, Ekerö, Botkyrka
-Sigtuna <- a$Sigtuna # Neighbours: Norrtälje, Vallentuna, Upplands Väsby, Upplands Bro
-Sollentuna <-a$Sollentuna # Neighbours: Upplands Väsby, Täby, Dandedryd, Solna, Sundbyberg, Stockholm, Järfälla
-Solna <- a$Solna # Neighbours: Sundbyberg, Sollentuna, Danderyd, Stockholm
-Stockholm <- a$Stockholm # Neighbours: Järfälla, Sollentuna, Sundbyberg, Solna, Danderyd, Lidingö, Nacka, Tyresö, Huddinge, Botkykra, Ekerö
-Sundbyberg <- a$Sundbyberg # Neighbours: Stockholm, Järfälla, Sollentuna, Solna
-Södertälje <- a$Södertälje # Neighbours: Nykvarn, Salem, Botkyrka, Nynänshamn, Ekerö
-Tyresö <- a$Tyresö # Neighbours: Nacka, Stockholm, Huddinge, Haninge
-Täby <- a$Täby # Neighbours: Uppalnds Väsby, Vallentuna, Österåker, Vaxholm, Lidingö, Danderyd, Sollentuna
-Upplands_Bro <-a$`Upplands-Bro`# Neighbours: Sigtuna, Upplands Väsby, Järfälla, Ekerö
-Upplands_Väsby <- a$`Upplands Väsby`# Neighbours: Upplands-Bro, Sigtuna, Vallentuna, Täby, Sollentuna, Järfälla
-Vallentuna <- a$Vallentuna # Neighbours: Sigtuna, Norrtälje, Öteråker, Täby, Upplands Väsby 
-Vaxholm <- a$Vaxholm # Neighbours: Österåker, Värmdö, Nacka, Lidingö, Danderyd, Täby
-Värmdö <- a$Värmdö # Neighbours: Vaxholm, Lidingö, Nacka
-Österåker <- a$Österåker # Neighbours: Norrtälje, Vallentuna, Täby, Vaxholm
+Botkyrka <- mega_list$Botkyrka # Neighbours:Nynäshamn, Haninge, Huddinge, Stockholm, Ekerö, Salem, Södertälje
+Danderyd <- mega_list$Danderyd # Neighbours:Sollentuna, Täby, Solna, Växholm, Lidingö, Stockholm
+Ekerö <- mega_list$Ekerö # Neighbours: Upplands-Bro, Järfälla, Stockholm, Botkyrka, Salem, Södertälje
+Haninge <-mega_list$Haninge # Neighbours: Tyresö, Huddinge, Botkykrka, Nynäshämn
+Huddinge <- mega_list$Huddinge # Neighbours: Botkyrka, Stockholm, Tyresö, Haninge
+Järfälla <-mega_list$Järfälla # Neighbours: Upplands Bro, Upplands Väsby, Sollentuna, Sundbyberg, Stockholm, Ekerö
+Lidingö <- mega_list$Lidingö # Neighbours: Vaxholm, Österåker, Täby, Danderyd, Stocholm, Nacka, Värmdö
+Nacka <- mega_list$Nacka # Neighbours: Värmdö, Vaxholm, Lidingö, Stockholm, Tyresö
+Norrtälje <- mega_list$Norrtälje # Neighbours: Sigtuna, Vallentuna, Österåker
+Nykvarn <- mega_list$Nykvarn # Neighbours: Södertälje
+Nynäshamn <- mega_list$Nynäshamn # Neighbours: Haninge, Botkyrka, Södertälje
+Salem <- mega_list$Salem # Neighbours: Södertälje, Ekerö, Botkyrka
+Sigtuna <- mega_list$Sigtuna # Neighbours: Norrtälje, Vallentuna, Upplands Väsby, Upplands Bro
+Sollentuna <-mega_list$Sollentuna # Neighbours: Upplands Väsby, Täby, Dandedryd, Solna, Sundbyberg, Stockholm, Järfälla
+Solna <- mega_list$Solna # Neighbours: Sundbyberg, Sollentuna, Danderyd, Stockholm
+Stockholm <- mega_list$Stockholm # Neighbours: Järfälla, Sollentuna, Sundbyberg, Solna, Danderyd, Lidingö, Nacka, Tyresö, Huddinge, Botkykra, Ekerö
+Sundbyberg <- mega_list$Sundbyberg # Neighbours: Stockholm, Järfälla, Sollentuna, Solna
+Södertälje <- mega_list$Södertälje # Neighbours: Nykvarn, Salem, Botkyrka, Nynänshamn, Ekerö
+Tyresö <- mega_list$Tyresö # Neighbours: Nacka, Stockholm, Huddinge, Haninge
+Täby <- mega_list$Täby # Neighbours: Uppalnds Väsby, Vallentuna, Österåker, Vaxholm, Lidingö, Danderyd, Sollentuna
+Upplands_Bro <-mega_list$`Upplands-Bro`# Neighbours: Sigtuna, Upplands Väsby, Järfälla, Ekerö
+Upplands_Väsby <- mega_list$`Upplands Väsby`# Neighbours: Upplands-Bro, Sigtuna, Vallentuna, Täby, Sollentuna, Järfälla
+Vallentuna <- mega_list$Vallentuna # Neighbours: Sigtuna, Norrtälje, Öteråker, Täby, Upplands Väsby 
+Vaxholm <- mega_list$Vaxholm # Neighbours: Österåker, Värmdö, Nacka, Lidingö, Danderyd, Täby
+Värmdö <- mega_list$Värmdö # Neighbours: Vaxholm, Lidingö, Nacka
+Österåker <- mega_list$Österåker # Neighbours: Norrtälje, Vallentuna, Täby, Vaxholm
 
 #Botkyrka
 

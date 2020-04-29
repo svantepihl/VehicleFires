@@ -202,3 +202,30 @@ dat_days_stockholm <- left_join(Dates,Dat_Municipalities[,-6], by=c("Municipalit
 
 rm(FireCount,dat_holidays,dat_weather,i,j,Municipalities,dat_stockholm, dat_msb)
 
+
+
+# cleaning  necessary for municipality based models and time-series model , non-panel data. Use this part of cleaning also for the INGARCH models.
+colnames(dat_days_stockholm) [12] <- "Number_of_Fires"
+colnames(dat_days_stockholm)[16] <- "Region_Code"
+
+dat_days_stockholm$Week <- isoweek(dat_days_stockholm$Date)
+dat_days_stockholm$Year <- year(dat_days_stockholm$Date)
+dat_days_stockholm$Month <- month(dat_days_stockholm$Date)
+dat_days_stockholm$Quarter <- quarter(dat_days_stockholm$Date)
+
+split(dat_days_stockholm, as.factor(dat_days_stockholm$Weekday)) %>%lapply( "[", ,12)%>%lapply(mean)
+split(dat_days_stockholm, as.factor(dat_days_stockholm$Month)) %>%lapply( "[", ,12)%>%lapply(mean)
+split(dat_days_stockholm, as.factor(dat_days_stockholm$Quarter)) %>%lapply( "[", ,12)%>%lapply(mean)
+
+dat_days_stockholm$First_Quarter <- 0
+dat_days_stockholm$Second_Quarter <- 0
+dat_days_stockholm$Third_Quarter <-0
+dat_days_stockholm$Fourth_Quarter <- 0
+dat_days_stockholm$Weekend <- 0
+
+dat_days_stockholm[dat_days_stockholm$Quarter == 1, "First_Quarter"] <- 1
+dat_days_stockholm[dat_days_stockholm$Quarter == 2, "Second_Quarter"] <- 1
+dat_days_stockholm[dat_days_stockholm$Quarter == 3, "Third_Quarter"] <- 1
+dat_days_stockholm[dat_days_stockholm$Quarter == 4, "Fourth_Quarter"] <- 1
+dat_days_stockholm[dat_days_stockholm$Weekday == "lördag" | dat_days_stockholm$Weekday == "söndag", "Weekend"] <- 1
+

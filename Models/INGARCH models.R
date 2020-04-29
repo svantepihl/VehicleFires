@@ -2,34 +2,7 @@ require(tidyverse)
 require(tscount)
 require(lubridate)
 
-str(Botkyrka)
 
-dat_days_stockholm$Month <- month(dat_days_stockholm$Date)
-dat_days_stockholm$Quarter <- quarter(dat_days_stockholm$Date)
-
-split(dat_days_stockholm, as.factor(dat_days_stockholm$Weekday)) %>%lapply( "[", ,12)%>%lapply(mean)
-split(dat_days_stockholm, as.factor(dat_days_stockholm$Month)) %>%lapply( "[", ,12)%>%lapply(mean)
-split(dat_days_stockholm, as.factor(dat_days_stockholm$Quarter)) %>%lapply( "[", ,12)%>%lapply(mean)
-
-dat_days_stockholm$first_quarter <- 0
-dat_days_stockholm$second_quarter <- 0
-dat_days_stockholm$third_quarter <-0
-dat_days_stockholm$fourth_quarter <- 0
-dat_days_stockholm$weekend <- 0
-
-dat_days_stockholm [dat_days_stockholm$Quarter == 1, "first_quarter"] <- 1
-dat_days_stockholm [dat_days_stockholm$Quarter == 2, "second_quarter"] <- 1
-dat_days_stockholm [dat_days_stockholm$Quarter == 3, "third_quarter"] <- 1
-dat_days_stockholm [dat_days_stockholm$Quarter == 3, "fourth_quarter"] <- 1
-dat_days_stockholm [dat_days_stockholm$Weekday == "lördag" | dat_days_stockholm$Weekday == "söndag", "weekend"] <- 1
-
-
-
-
-
-# transorm the mega dataframe dat_days_stockholm in a list of data frames, where each municipality has its own data frame
-# you can call the separate data frames through double square brackets, and single collumns or rows within singe data frames through
-# single squared brackets, in the usual way . So for instance [[1]] [12] is the column "count x"- the number of car fires - in botkyrka
 mega_list <- split.data.frame(dat_days_stockholm, as.factor(dat_days_stockholm$Municipality_Name))
 
 

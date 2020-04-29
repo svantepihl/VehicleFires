@@ -14,11 +14,11 @@ Kommuner_stockholm <- reshape(data=Kommuner_stockholm,idvar= c("Municipality", "
                           timevar = "Variable",
                           direction="wide")
 Kommuner_stockholm <- Kommuner_stockholm[,-19]
-colnames(Kommuner_stockholm) <- c("Municipality", "Year", "Number of Expert Exployees", "Percentage of Expert Employees", "Regional GDP per capita", "Percentage of Non-Workforce",
-                                  "Percentage of Students without the Grades to be admitted into Professional High School Programs", "Percentage of Active Workforce", "Percentage of 0-19 People Living in Poor Households",
-                                  "Percentage of Unemployed and Not Looking for Work or Studying 16-64,", "Percentage of 16 to 84 Lacking Trust in Others", "Percentage of Unemployed and Not Looking for Work or Studying 17-24",
-                                  "Percentage of 16-64 with Low-Income", "Amount of Benefits claimed", "Percentage of 16-24 in Long Term Unemployment", "Median Income 20+","Percentage of Residents Born Outside Sweden", 
-                                  "Percentage of Adults Claiming Low-Income Benefits for a Long Period of Time")  
+colnames(Kommuner_stockholm) <- c("Municipality", "Year", "Number_of_Expert_Employees", "Percentage_of_Expert_Employees", "Regional_GDP_per_Capita", "Percentage of Non-Workforce",
+                                  "Percentage_of_Students_without_the_Grades_to_be_admitted_into_Work_Related_High_School_Programs", "Percentage_of_Active_Workforce", "Percentage of 0-19 People Living in Poor Households",
+                                  "Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,", "Percentage_of_16_to_84_Lacking_Trust_in_Others", "Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_17_24",
+                                  "Percentage_of_16_64_with_Low_Income", "Amount_of_Benefits_Claimed", "Percentage_of_16_24_in_Long_Term_Unemployment", "Median_Income_20+","Percentage_of_Residents_Born_Outside_Sweden", 
+                                  "Percentage_of_Adults_Claiming_Low-Income_Benefits_for_a_Long_Period_of_Time")  
 
 
 #Add data about inhabitants
@@ -61,5 +61,31 @@ rm(dat_inhabitants, dat_inhabitants_kolada)
 
 dat_stockholm_kolada <- left_join(Kommuner_stockholm, dat_days_stockholm_kolada)
 
-rm(Kommuner_stockholm, dat_days_stockholm_kolada, dat_msb_for_Kolada)
+rm(Kommuner_stockholm, dat_days_stockholm_kolada, dat_msb_for_Kolada, dat_inhabitants)
 
+#Kolada_3
+
+Kolada_3 <- read_excel("Kommundata/Kolada_3.xlsx", skip = 1)
+
+
+
+dat_kolada_3 <- data.frame(Kolada_3[1:2], stack(Kolada_3[3:ncol(Kolada_3)]))
+colnames(dat_kolada_3) <- c("Variable", "Municipality", "Values", "Year")
+dat_kolada_3 <- dat_kolada_3%>% arrange(dat_kolada_3$Municipality)
+dat_kolada_3 <- reshape(data=dat_kolada_3,idvar= c("Municipality", "Year"),
+                           v.names = "Values",
+                           timevar = "Variable",
+                           direction="wide")
+
+colnames(dat_kolada_3) <- c("Municipality", "Year", "Meters_of_Car_Roads_per_Person", "Mil_per_Person_per_Year_by_car", "Perncetage_of_People_Satisfied_with_the_Possibilities_to_Use_Public_transportation", "Percentage_of_Residents_Satisfied_with_Traffic_Safety", "Percentage_of_Residents_Satisified_with_the_Condition_of_the_Streets") 
+rm(Kolada_3)
+
+dat_kolada_3$Year <- dat_kolada_3$Year%>% as.character()%>%as.integer()
+dat_kolada_3 <- filter(dat_kolada_3, dat_kolada_3$Year > 2011 & dat_kolada_3$Year < 2019)
+
+dat_stockholm_kolada <- left_join(dat_kolada_3, dat_stockholm_kolada, by = c("Year", "Municipality"))
+rm(dat_kolada_3)
+rm(Dates, Number_of_Fires, Dat_Municipalities, Kommuner)
+
+colnames(dat_stockholm_kolada) [1] <- "Municipality_Name"
+colnames(dat_stockholm_kolada) [30] <-"Number_of_Fires_Year"

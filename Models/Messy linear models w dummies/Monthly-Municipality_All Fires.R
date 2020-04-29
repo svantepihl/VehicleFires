@@ -5,53 +5,52 @@ require(lmtest)
 require(xts)
 
 
-a <- split(dat_months_stockholm_arson, dat_months_stockholm_arson$Municipality_Name)
+mega_list <- split(dat_months_stockholm_arson, dat_months_stockholm_arson$Municipality_Name)
 
 
-Botkyrka <- a$Botkyrka # Neighbours:Nynäshamn, Haninge, Huddinge, Stockholm, Ekerö, Salem, Södertälje
-Danderyd <- a$Danderyd # Neighbours:Sollentuna, Täby, Solna, Växholm, Lidingö, Stockholm
-Ekerö <- a$Ekerö # Neighbours: Upplands-Bro, Järfälla, Stockholm, Botkyrka, Salem, Södertälje
-Haninge <-a$Haninge # Neighbours: Tyresö, Huddinge, Botkykrka, Nynäshämn
-Huddinge <- a$Huddinge # Neighbours: Botkyrka, Stockholm, Tyresö, Haninge
-Järfälla <-a$Järfälla # Neighbours: Upplands Bro, Upplands Väsby, Sollentuna, Sundbyberg, Stockholm, Ekerö
-Lidingö <- a$Lidingö # Neighbours: Vaxholm, Österåker, Täby, Danderyd, Stocholm, Nacka, Värmdö
-Nacka <- a$Nacka # Neighbours: Värmdö, Vaxholm, Lidingö, Stockholm, Tyresö
-Norrtälje <- a$Norrtälje # Neighbours: Sigtuna, Vallentuna, Österåker
-Nykvarn <- a$Nykvarn # Neighbours: Södertälje
-Nynäshamn <- a$Nynäshamn # Neighbours: Haninge, Botkyrka, Södertälje
-Salem <- a$Salem # Neighbours: Södertälje, Ekerö, Botkyrka
-Sigtuna <- a$Sigtuna # Neighbours: Norrtälje, Vallentuna, Upplands Väsby, Upplands Bro
-Sollentuna <-a$Sollentuna # Neighbours: Upplands Väsby, Täby, Dandedryd, Solna, Sundbyberg, Stockholm, Järfälla
-Solna <- a$Solna # Neighbours: Sundbyberg, Sollentuna, Danderyd, Stockholm
-Stockholm <- a$Stockholm # Neighbours: Järfälla, Sollentuna, Sundbyberg, Solna, Danderyd, Lidingö, Nacka, Tyresö, Huddinge, Botkykra, Ekerö
-Sundbyberg <- a$Sundbyberg # Neighbours: Stockholm, Järfälla, Sollentuna, Solna
-Södertälje <- a$Södertälje # Neighbours: Nykvarn, Salem, Botkyrka, Nynänshamn, Ekerö
-Tyresö <- a$Tyresö # Neighbours: Nacka, Stockholm, Huddinge, Haninge
-Täby <- a$Täby # Neighbours: Uppalnds Väsby, Vallentuna, Österåker, Vaxholm, Lidingö, Danderyd, Sollentuna
-Upplands_Bro <-a$`Upplands-Bro`# Neighbours: Sigtuna, Upplands Väsby, Järfälla, Ekerö
-Upplands_Väsby <- a$`Upplands Väsby`# Neighbours: Upplands-Bro, Sigtuna, Vallentuna, Täby, Sollentuna, Järfälla
-Vallentuna <- a$Vallentuna # Neighbours: Sigtuna, Norrtälje, Öteråker, Täby, Upplands Väsby 
-Vaxholm <- a$Vaxholm # Neighbours: Österåker, Värmdö, Nacka, Lidingö, Danderyd, Täby
-Värmdö <- a$Värmdö # Neighbours: Vaxholm, Lidingö, Nacka
-Österåker <- a$Österåker # Neighbours: Norrtälje, Vallentuna, Täby, Vaxholm
+Botkyrka <- mega_list$Botkyrka # Neighbours:Nynäshamn, Haninge, Huddinge, Stockholm, Ekerö, Salem, Södertälje
+Danderyd <- mega_list$Danderyd # Neighbours:Sollentuna, Täby, Solna, Växholm, Lidingö, Stockholm
+Ekerö <- mega_list$Ekerö # Neighbours: Upplands-Bro, Järfälla, Stockholm, Botkyrka, Salem, Södertälje
+Haninge <-mega_list$Haninge # Neighbours: Tyresö, Huddinge, Botkykrka, Nynäshämn
+Huddinge <- mega_list$Huddinge # Neighbours: Botkyrka, Stockholm, Tyresö, Haninge
+Järfälla <-mega_list$Järfälla # Neighbours: Upplands Bro, Upplands Väsby, Sollentuna, Sundbyberg, Stockholm, Ekerö
+Lidingö <- mega_list$Lidingö # Neighbours: Vaxholm, Österåker, Täby, Danderyd, Stocholm, Nacka, Värmdö
+Nacka <- mega_list$Nacka # Neighbours: Värmdö, Vaxholm, Lidingö, Stockholm, Tyresö
+Norrtälje <- mega_list$Norrtälje # Neighbours: Sigtuna, Vallentuna, Österåker
+Nykvarn <- mega_list$Nykvarn # Neighbours: Södertälje
+Nynäshamn <- mega_list$Nynäshamn # Neighbours: Haninge, Botkyrka, Södertälje
+Salem <- mega_list$Salem # Neighbours: Södertälje, Ekerö, Botkyrka
+Sigtuna <- mega_list$Sigtuna # Neighbours: Norrtälje, Vallentuna, Upplands Väsby, Upplands Bro
+Sollentuna <-mega_list$Sollentuna # Neighbours: Upplands Väsby, Täby, Dandedryd, Solna, Sundbyberg, Stockholm, Järfälla
+Solna <- mega_list$Solna # Neighbours: Sundbyberg, Sollentuna, Danderyd, Stockholm
+Stockholm <- mega_list$Stockholm # Neighbours: Järfälla, Sollentuna, Sundbyberg, Solna, Danderyd, Lidingö, Nacka, Tyresö, Huddinge, Botkykra, Ekerö
+Sundbyberg <- mega_list$Sundbyberg # Neighbours: Stockholm, Järfälla, Sollentuna, Solna
+Södertälje <- mega_list$Södertälje # Neighbours: Nykvarn, Salem, Botkyrka, Nynänshamn, Ekerö
+Tyresö <- mega_list$Tyresö # Neighbours: Nacka, Stockholm, Huddinge, Haninge
+Täby <- mega_list$Täby # Neighbours: Uppalnds Väsby, Vallentuna, Österåker, Vaxholm, Lidingö, Danderyd, Sollentuna
+Upplands_Bro <-mega_list$`Upplands-Bro`# Neighbours: Sigtuna, Upplands Väsby, Järfälla, Ekerö
+Upplands_Väsby <- mega_list$`Upplands Väsby`# Neighbours: Upplands-Bro, Sigtuna, Vallentuna, Täby, Sollentuna, Järfälla
+Vallentuna <- mega_list$Vallentuna # Neighbours: Sigtuna, Norrtälje, Öteråker, Täby, Upplands Väsby 
+Vaxholm <- mega_list$Vaxholm # Neighbours: Österåker, Värmdö, Nacka, Lidingö, Danderyd, Täby
+Värmdö <- mega_list$Värmdö # Neighbours: Vaxholm, Lidingö, Nacka
+Österåker <- mega_list$Österåker # Neighbours: Norrtälje, Vallentuna, Täby, Vaxholm
 
 #Botkyrka
 
-y_Past_Month_botkyrka <-  a [[1]] [1:83, 17]
-y_Two_Months_ago_botkyrka <- a [[1]] [1:82, 17]
+y_Past_Month_botkyrka <-  mega_list [[1]] [1:83, 17]
+y_Two_Months_ago_botkyrka <- mega_list [[1]] [1:82, 17]
 Botkyrka$Past_Month_fires <- c(0, y_Past_Month_botkyrka)
 Botkyrka$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_botkyrka)
 
-a[[2]] [1:82, 17]
 #Danderyd
-y_Past_Month_Danderyd <-  a [[2]] [1:83, 17]
-y_Two_Months_ago_Danderyd <- a [[2]] [1:82, 17]
+y_Past_Month_Danderyd <-  mega_list [[2]] [1:83, 17]
+y_Two_Months_ago_Danderyd <- mega_list [[2]] [1:82, 17]
 Danderyd$Past_Month_fires <- c(0, y_Past_Month_Danderyd)
 Danderyd$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Danderyd)
 
 #Ekerö
-y_Past_Month_Ekerö <-  a [[3]] [1:83, 17]
-y_Two_Months_ago_Ekerö <- a [[3]] [1:82, 17]
+y_Past_Month_Ekerö <-  mega_list [[3]] [1:83, 17]
+y_Two_Months_ago_Ekerö <- mega_list [[3]] [1:82, 17]
 Ekerö$Past_Month_fires <- c(0, y_Past_Month_Ekerö)
 Ekerö$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Ekerö)
 
@@ -59,84 +58,84 @@ cor(Botkyrka$Number_of_Fires, Ekerö$Number_of_Fires)
 
 #Haninge
 
-y_Past_Month_Haninge <-  a [[4]] [1:83, 17]
-y_Two_Months_ago_Haninge <- a [[4]] [1:82, 17]
+y_Past_Month_Haninge <-  mega_list [[4]] [1:83, 17]
+y_Two_Months_ago_Haninge <- mega_list [[4]] [1:82, 17]
 Haninge$Past_Month_fires <- c(0, y_Past_Month_Haninge)
 Haninge$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Haninge)
 
 #Huddinge
 
-y_Past_Month_Huddinge <-  a [[5]] [1:83, 17]
-y_Two_Months_ago_Huddinge <- a [[5]] [1:82, 17]
+y_Past_Month_Huddinge <-  mega_list [[5]] [1:83, 17]
+y_Two_Months_ago_Huddinge <- mega_list [[5]] [1:82, 17]
 Huddinge$Past_Month_fires <- c(0, y_Past_Month_Huddinge)
 Huddinge$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Huddinge)
 
 #Järfälla
 
-y_Past_Month_Järfälla <-  a [[6]] [1:83, 17]
-y_Two_Months_ago_Järfälla <- a [[6]] [1:82, 17]
+y_Past_Month_Järfälla <-  mega_list [[6]] [1:83, 17]
+y_Two_Months_ago_Järfälla <- mega_list [[6]] [1:82, 17]
 Järfälla$Past_Month_fires <- c(0, y_Past_Month_Järfälla)
 Järfälla$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Järfälla)
 
 
 #Lidingö
 
-y_Past_Month_Lidingö <-  a [[7]] [1:83, 17]
-y_Two_Months_ago_Lidingö <- a [[7]] [1:82, 17]
+y_Past_Month_Lidingö <-  mega_list [[7]] [1:83, 17]
+y_Two_Months_ago_Lidingö <- mega_list [[7]] [1:82, 17]
 Lidingö$Past_Month_fires <- c(0, y_Past_Month_Lidingö)
 Lidingö$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Lidingö)
 
 
 #Nacka
 
-y_Past_Month_Nacka <-  a [[8]] [1:83, 17]
-y_Two_Months_ago_Nacka <- a [[8]] [1:82, 17]
+y_Past_Month_Nacka <-  mega_list [[8]] [1:83, 17]
+y_Two_Months_ago_Nacka <- mega_list [[8]] [1:82, 17]
 Nacka$Past_Month_fires <- c(0, y_Past_Month_Nacka)
 Nacka$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Nacka)
 
 #Norrtälje
 
-y_Past_Month_Norrtälje <-  a [[9]] [1:83, 17]
-y_Two_Months_ago_Norrtälje <- a [[9]] [1:82, 17]
+y_Past_Month_Norrtälje <-  mega_list [[9]] [1:83, 17]
+y_Two_Months_ago_Norrtälje <- mega_list [[9]] [1:82, 17]
 Norrtälje$Past_Month_fires <- c(0, y_Past_Month_Norrtälje)
 Norrtälje$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Norrtälje)
 
 
 #Nykvarn
 
-y_Past_Month_Nykvarn <-  a [[10]] [1:83, 17]
-y_Two_Months_ago_Nykvarn <- a [[10]] [1:82, 17]
+y_Past_Month_Nykvarn <-  mega_list [[10]] [1:83, 17]
+y_Two_Months_ago_Nykvarn <- mega_list [[10]] [1:82, 17]
 Nykvarn$Past_Month_fires <- c(0, y_Past_Month_Nykvarn)
 Nykvarn$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Nykvarn)
 
 
 #Nynäshamn
 
-y_Past_Month_Nynäshamn <-  a [[11]] [1:83, 17]
-y_Two_Months_ago_Nynäshamn <- a [[11]] [1:82, 17]
+y_Past_Month_Nynäshamn <-  mega_list [[11]] [1:83, 17]
+y_Two_Months_ago_Nynäshamn <- mega_list [[11]] [1:82, 17]
 Nynäshamn$Past_Month_fires <- c(0, y_Past_Month_Nynäshamn)
 Nynäshamn$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Nynäshamn)
 
 # Salem
 
-y_Past_Month_Salem <-  a [[17]] [1:83, 17]
-y_Two_Months_ago_Salem <- a [[17]] [1:82, 17]
+y_Past_Month_Salem <-  mega_list [[17]] [1:83, 17]
+y_Two_Months_ago_Salem <- mega_list [[17]] [1:82, 17]
 Salem$Past_Month_fires <- c(0, y_Past_Month_Salem)
 Salem$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Salem)
 
 
 # Sigtuna
 
-y_Past_Month_Sigtuna <-  a [[13]] [1:83, 17]
-y_Two_Months_ago_Sigtuna <- a [[13]] [1:82, 17]
+y_Past_Month_Sigtuna <-  mega_list [[13]] [1:83, 17]
+y_Two_Months_ago_Sigtuna <- mega_list [[13]] [1:82, 17]
 Sigtuna$Past_Month_fires <- c(0, y_Past_Month_Sigtuna)
 Sigtuna$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Sigtuna)
 
 
 #Sollentuna
 
-y_Past_Month_Sollentuna <-  a [[14]] [1:83, 17]
-y_Two_Months_ago_Sollentuna <- a [[14]] [1:82, 17]
+y_Past_Month_Sollentuna <-  mega_list [[14]] [1:83, 17]
+y_Two_Months_ago_Sollentuna <- mega_list [[14]] [1:82, 17]
 Sollentuna$Past_Month_fires <- c(0, y_Past_Month_Sollentuna)
 Sollentuna$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Sollentuna)
 
@@ -144,72 +143,72 @@ Sollentuna$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Sollentuna)
 #Solna
 
 
-y_Past_Month_Solna <-  a [[15]] [1:83, 17]
-y_Two_Months_ago_Solna <- a [[15]] [1:82, 17]
+y_Past_Month_Solna <-  mega_list [[15]] [1:83, 17]
+y_Two_Months_ago_Solna <- mega_list [[15]] [1:82, 17]
 Solna$Past_Month_fires <- c(0, y_Past_Month_Solna)
 Solna$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Solna)
 
 
 # Stockholm
 
-y_Past_Month_Stockholm <-  a [[16]] [1:83, 17]
-y_Two_Months_ago_Stockholm <- a [[16]] [1:82, 17]
+y_Past_Month_Stockholm <-  mega_list [[16]] [1:83, 17]
+y_Two_Months_ago_Stockholm <- mega_list [[16]] [1:82, 17]
 Stockholm$Past_Month_fires <- c(0, y_Past_Month_Stockholm)
 Stockholm$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Stockholm)
 
 
 # Sundbyberg 
 
-y_Past_Month_Sundbyberg <-  a [[17]] [1:83, 17]
-y_Two_Months_ago_Sundbyberg <- a [[17]] [1:82, 17]
+y_Past_Month_Sundbyberg <-  mega_list [[17]] [1:83, 17]
+y_Two_Months_ago_Sundbyberg <- mega_list [[17]] [1:82, 17]
 Sundbyberg$Past_Month_fires <- c(0, y_Past_Month_Sundbyberg)
 Sundbyberg$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Sundbyberg)
 
 
 # Södertälje 
 
-y_Past_Month_Södertälje <-  a [[18]] [1:83, 17]
-y_Two_Months_ago_Södertälje <- a [[18]] [1:82, 17]
+y_Past_Month_Södertälje <-  mega_list [[18]] [1:83, 17]
+y_Two_Months_ago_Södertälje <- mega_list [[18]] [1:82, 17]
 Södertälje$Past_Month_fires <- c(0, y_Past_Month_Södertälje)
 Södertälje$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Södertälje)
 
 
 # Tyresö
 
-y_Past_Month_Tyresö <-  a [[19]] [1:83, 17]
-y_Two_Months_ago_Tyresö <- a [[19]] [1:82, 17]
+y_Past_Month_Tyresö <-  mega_list [[19]] [1:83, 17]
+y_Two_Months_ago_Tyresö <- mega_list [[19]] [1:82, 17]
 Tyresö$Past_Month_fires <- c(0, y_Past_Month_Tyresö)
 Tyresö$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Tyresö)
 
 
 # Täby
 
-y_Past_Month_Täby <-  a [[20]] [1:83, 17]
-y_Two_Months_ago_Täby <- a [[20]] [1:82, 17]
+y_Past_Month_Täby <-  mega_list [[20]] [1:83, 17]
+y_Two_Months_ago_Täby <- mega_list [[20]] [1:82, 17]
 Täby$Past_Month_fires <- c(0, y_Past_Month_Täby)
 Täby$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Täby)
 
 
 # Upplands_Bro
 
-y_Past_Month_Upplands_Bro <-  a [[21]] [1:83, 17]
-y_Two_Months_ago_Upplands_Bro <- a [[21]] [1:82, 17]
+y_Past_Month_Upplands_Bro <-  mega_list [[21]] [1:83, 17]
+y_Two_Months_ago_Upplands_Bro <- mega_list [[21]] [1:82, 17]
 Upplands_Bro$Past_Month_fires <- c(0, y_Past_Month_Upplands_Bro)
 Upplands_Bro$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Upplands_Bro)
 
 
 # Upplands_Väsby
 
-y_Past_Month_Upplands_Väsby <-  a [[22]] [1:83, 17]
-y_Two_Months_ago_Upplands_Väsby <- a [[22]] [1:82, 17]
+y_Past_Month_Upplands_Väsby <-  mega_list [[22]] [1:83, 17]
+y_Two_Months_ago_Upplands_Väsby <- mega_list [[22]] [1:82, 17]
 Upplands_Väsby$Past_Month_fires <- c(0, y_Past_Month_Upplands_Väsby)
 Upplands_Väsby$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Upplands_Väsby)
 
 
 # Vallentuna
 
-y_Past_Month_Vallentuna <-  a [[23]] [1:83, 17]
-y_Two_Months_ago_Vallentuna <- a [[23]] [1:82, 17]
+y_Past_Month_Vallentuna <-  mega_list [[23]] [1:83, 17]
+y_Two_Months_ago_Vallentuna <- mega_list [[23]] [1:82, 17]
 Vallentuna$Past_Month_fires <- c(0, y_Past_Month_Vallentuna)
 Vallentuna$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Vallentuna)
 
@@ -217,24 +216,24 @@ Vallentuna$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Vallentuna)
 # Vaxholm
 
 
-y_Past_Month_Vaxholm <-  a [[24]] [1:83, 17]
-y_Two_Months_ago_Vaxholm <- a [[24]] [1:82, 17]
+y_Past_Month_Vaxholm <-  mega_list [[24]] [1:83, 17]
+y_Two_Months_ago_Vaxholm <- mega_list [[24]] [1:82, 17]
 Vaxholm$Past_Month_fires <- c(0, y_Past_Month_Vaxholm)
 Vaxholm$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Vaxholm)
 
 
 #Värmdö
 
-y_Past_Month_Värmdö <-  a [[25]] [1:83, 17]
-y_Two_Months_ago_Värmdö <- a [[25]] [1:82, 17]
+y_Past_Month_Värmdö <-  mega_list [[25]] [1:83, 17]
+y_Two_Months_ago_Värmdö <- mega_list [[25]] [1:82, 17]
 Värmdö$Past_Month_fires <- c(0, y_Past_Month_Värmdö)
 Värmdö$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Värmdö)
 
 
 # Österåker
 
-y_Past_Month_Österåker <-  a [[26]] [1:83, 17]
-y_Two_Months_ago_Österåker <- a [[26]] [1:82, 17]
+y_Past_Month_Österåker <-  mega_list [[26]] [1:83, 17]
+y_Two_Months_ago_Österåker <- mega_list [[26]] [1:82, 17]
 Österåker$Past_Month_fires <- c(0, y_Past_Month_Österåker)
 Österåker$Two_Months_ago_Fires <- c(0,0, y_Two_Months_ago_Österåker)
 
