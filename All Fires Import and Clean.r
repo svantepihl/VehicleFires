@@ -35,13 +35,33 @@ dat_msb$Reason[dat_msb$Reason == "Fel i utrustning"] <- "Technical Malfunctionin
 dat_msb$Reason[dat_msb$Reason == "Okänd"] <- "Unknown"
 dat_msb$Reason <- as.factor(dat_msb$Reason)
 
+
 #Remove NA values
 dat_msb <- na.omit(dat_msb)
 
 # Extract municipality info
 dat_msb$Count <- 1
 
+#temp <- subset(dat_msb, dat_msb$Reason=="Other Reason") 
+#Dat_Municipalities_OtherReason <- aggregate(Count~Municipality_Code+Municipality_Name+Type_of_Municipality_Code+Region_Code,temp, FUN = sum)
+
+#temp <- subset(dat_msb, dat_msb$Reason=="Arson") 
+#Dat_Municipalities_Arson <- aggregate(Count~Municipality_Code+Municipality_Name+Type_of_Municipality_Code+Region_Code,temp, FUN = sum)
+
+#temp <- subset(dat_msb, dat_msb$Reason=="Technical Malfunctioning") 
+#Dat_Municipalities_Tech <- aggregate(Count~Municipality_Code+Municipality_Name+Type_of_Municipality_Code+Region_Code,temp, FUN = sum)
+
+#temp <- subset(dat_msb, dat_msb$Reason=="Unknown") 
+#Dat_Municipalities_Unkown <- aggregate(Count~Municipality_Code+Municipality_Name+Type_of_Municipality_Code+Region_Code,temp, FUN = sum)
+#remove(temp)
+
 Dat_Municipalities <- aggregate(Count~Municipality_Code+Municipality_Name+Type_of_Municipality_Code+Region_Code,dat_msb, FUN = sum)
+
+#write.csv(Dat_Municipalities_AllFires, "Dat_Municipalities_AllFires.csv")
+#write.csv(Dat_Municipalities_Arson, "Dat_Municipalities_Arson.csv")
+#write.csv(Dat_Municipalities_OtherReason, "Dat_Municipalities_Other.csv")
+#write.csv(Dat_Municipalities_Tech, "Dat_Municipalities_Tech.csv")
+#write.csv(Dat_Municipalities_Unkown, "Dat_Municipalities_Unkown.csv") 
 
 #For use in Kolada
 
