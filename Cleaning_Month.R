@@ -43,16 +43,5 @@ mean(dat_months_stockholm$Number_of_Fires_Month, na.rm =TRUE)
 sum(dat_months_stockholm$Number_of_Fires_Month, na.rm = TRUE)
 sum(dat_months_stockholm$Number_of_Fires_Year, na.rm = TRUE) /12 
 
-# Add lagged variables 
 
-dat_months_stockholm <- dat_months_stockholm %>% 
-  group_by(Municipality_Name) %>%
-  mutate(First_Difference = Number_of_Fires_Month - lag(Number_of_Fires_Month))%>%
-  ungroup
-
-
-dat_months_stockholm <- dat_months_stockholm %>% 
-  group_by(Municipality_Name) %>%
-  mutate(Past_Month_Fires = lag(Number_of_Fires_Month))%>%
-  ungroup
 
