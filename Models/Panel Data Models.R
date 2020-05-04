@@ -8,43 +8,30 @@ require(xts)
 require(plm)
 require(zoo)
 require(pglm)
+require(forecast)
 
 
 
-# Models - Panels by Hand, useful only to understand functioning of plm/pglm
+# Dummy variables estimators, equivalent fixed effects
 
-model_months <- lm(formula = dat_months_stockholm$Number_of_Fires ~
-                    + dat_months_stockholm$Municipality_Name + dat_months_stockholm$Holidays
-                    + dat_months_stockholm$Temperature + dat_months_stockholm$Past_Month_Fires)
+model_months <- lm(formula = dat_months_stockholm$Number_of_Fires_Month ~
+                    + dat_months_stockholm$Municipality_Name + dat_months_stockholm$Holidays + dat_months_stockholm$Temperature)
 
-model_months_2 <- glm(formula = dat_months_stockholm$Number_of_Fires ~
-                     + dat_months_stockholm$Municipality_Name + dat_months_stockholm$Holidays
-                   + dat_months_stockholm$Temperature + dat_months_stockholm$Past_Month_Fires, family = "poisson")
+model_months_2 <- glm(formula = dat_months_stockholm$Number_of_Fires_Month ~
+                     + dat_months_stockholm$Municipality_Name + dat_months_stockholm$Holidays + dat_months_stockholm$Temperature, family = "poisson")
 
-model_months_3 <- glm.nb(formula = dat_months_stockholm$Number_of_Fires ~
-                        + dat_months_stockholm$Municipality_Name + dat_months_stockholm$Holidays
-                      + dat_months_stockholm$Temperature + dat_months_stockholm$Past_Month_Fires)
-
-
-model_months_arson <- lm(formula = dat_months_stockholm_arson$Number_of_Fires ~
-                     + dat_months_stockholm_arson$Municipality_Name + dat_months_stockholm_arson$Temperature +dat_months_stockholm$Year
-                     + dat_months_stockholm_arson$Past_Month_Fires)
-
-cor(dat_months_stockholm$Number_of_Fires, dat_months_stockholm$Past_Month_Fires, use = "complete.obs")
-
+model_months_3 <- glm.nb(formula = dat_months_stockholm$Number_of_Fires_Month ~
+                        + dat_months_stockholm$Municipality_Name + dat_months_stockholm$Holidays + dat_months_stockholm$Temperature)
 
 summary(model_months)
 summary(model_months_2)
 summary(model_months_3)
 
 
-summary(model_months_arson)
-
-
 # Panel models, "the good(decent) models" 
 
-form <- (dat_months_stockholm$Number_of_Fires_Month ~  dat_months_stockholm$Temperature
-        + dat_months_stockholm$Holidays)
+form <- (dat_months_stockholm$Number_of_Fires_Month ~
+        + dat_months_stockholm$Holidays + dat_months_stockholm$Temperature)
 
 form_2 <- (dat_months_stockholm$Number_of_Fires_Month ~
              + dat_months_stockholm$Temperature)
