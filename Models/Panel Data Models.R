@@ -28,7 +28,7 @@ summary(model_months_2)
 summary(model_months_3)
 
 
-# Panel models, "the good(decent) models" 
+# Classic panel models" 
 
 form <- (dat_months_stockholm$Number_of_Fires_Month ~
         + dat_months_stockholm$Holidays + dat_months_stockholm$Temperature)
