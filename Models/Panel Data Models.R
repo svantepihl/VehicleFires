@@ -9,6 +9,7 @@ require(plm)
 require(zoo)
 require(pglm)
 require(forecast)
+require(stats)
 
 
 
@@ -48,9 +49,9 @@ summary(model_months_plm_first_difference)
 
 
 model_months_pglm_random <- pglm(form, data = dat_months_stockholm, model = "random", family = "poisson", index = c("Municipality_Name","Date"))
-model_months_pglm_fixed <- plm(form, data = dat_months_stockholm, model = "within", index = c("Municipality_Name","Date"))
-model_months_pglm_pooled <- plm(form, data = dat_months_stockholm, model = "pooling", index = c("Municipality_Name", "Date"))
-model_months_pglm_first_difference <- plm(form, data = dat_months_stockholm, model = "fd", index = c("Municipality_Name", "Date"))
+model_months_pglm_fixed <- pglm(form, data = dat_months_stockholm, model = "within", family= "poisson", index = c("Municipality_Name","Date"))
+model_months_pglm_pooled <- pglm(form, data = dat_months_stockholm, model = "pooling", family= "poisson", index = c("Municipality_Name", "Date"))
+model_months_pglm_first_difference <- pglm(form, data = dat_months_stockholm, model = "fd",family = "poisson", index = c("Municipality_Name", "Date"))
 
 summary(model_months_pglm_random)
 summary(model_months_pglm_fixed)
@@ -96,3 +97,4 @@ model_days_pglm_first_difference <- plm(form, data = dat_days_stockholm, model =
 
 
 phtest(model_days_plm_random, model_days_plm_fixed)
+
