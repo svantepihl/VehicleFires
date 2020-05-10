@@ -65,3 +65,26 @@ dat_months_stockholm <- dat_months_stockholm %>%
   group_by(Municipality_Name) %>%
   mutate(Past_Month_Fires = lag(Number_of_Fires_Month))%>%
   ungroup
+
+# Check for equal mean and variance
+
+# Check for equal mean and variance
+var(dat_months_stockholm_arson$Number_of_Fires_Month, na.rm = TRUE)
+mean(dat_months_stockholm_arson$Number_of_Fires_Month, na.rm =TRUE)
+
+# Check that the number of fires displayed in both columns is correct
+sum(dat_months_stockholm_arson$Number_of_Fires_Month, na.rm = TRUE)
+sum(dat_months_stockholm_arson$Number_of_Fires_Year, na.rm = TRUE) /12 
+
+
+# Add lagged variables 
+
+dat_months_stockholm_arson <- dat_months_stockholm_arson %>% 
+  group_by(Municipality_Name) %>%
+  mutate(First_Difference = Number_of_Fires_Month - lag(Number_of_Fires_Month))%>%
+  ungroup
+
+dat_months_stockholm_arson <- dat_months_stockholm_arson %>% 
+  group_by(Municipality_Name) %>%
+  mutate(Past_Month_Fires = lag(Number_of_Fires_Month))%>%
+  ungroup

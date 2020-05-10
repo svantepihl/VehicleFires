@@ -1,3 +1,19 @@
+require(tidyverse)
+require(ggplot2)
+require(survival)
+require(lubridate)
+require(MASS)
+require(lmtest)
+require(xts)
+require(plm)
+require(zoo)
+require(pglm)
+require(forecast)
+require(stats)
+
+
+
+
 dat_months_stockholm_arson <- dat_days_stockholm_arson[, c(2, 4:13, 15:25)] %>% group_by(Year,Month, Municipality_Name, Municipality_Code) %>% 
   summarize(Temperature=mean(Temperature), Precipitation = mean(Precipitation), Holidays = sum(Holidays), Christmas_Holidays = sum(Christmas_Holidays),
             Sport_Holidays = sum(Sport_Holidays), Easter_Holidays = sum(Easter_Holidays),
@@ -11,33 +27,15 @@ dat_months_stockholm_arson <- dat_days_stockholm_arson[, c(2, 4:13, 15:25)] %>% 
 
 
 # Merge with Kolada
+
+dat_months_stockholm_arson$Date <- as.yearmon(paste(dat_months_stockholm_arson$Year, dat_months_stockholm_arson$Month), "%Y %m")
 dat_months_stockholm_arson <-merge (dat_months_stockholm_arson, dat_stockholm_kolada,  by= c("Municipality_Name", "Year"), all.y=TRUE)
-dat_months_stockholm_arson <- dat_months_stockholm_arson [, -c(43,44)]
 
 
-colnames(dat_months_stockholm_arson) [17] <- "Number_of_Fires"
+colnames(dat_months_stockholm_arson) [17] <- "Number_of_Fires_Month"
 dat_months_stockholm_arson$Month <- as.factor(dat_months_stockholm_arson$Month)
 
-# Check for equal mean and variance
-
-# Check for equal mean and variance
-var(dat_months_stockholm_arson$Number_of_Fires_Month, na.rm = TRUE)
-mean(dat_months_stockholm_arson$Number_of_Fires_Month, na.rm =TRUE)
-
-# Check that the number of fires displayed in both columns is correct
-sum(dat_months_stockholm_arson$Number_of_Fires_Month, na.rm = TRUE)
-sum(dat_months_stockholm_arson$Number_of_Fires_Year, na.rm = TRUE) /12 
 
 
-# Add lagged variables 
-
-dat_months_stockholm_arson <- dat_months_stockholm_arson %>% 
-  group_by(Municipality_Name) %>%
-  mutate(First_Difference = Number_of_Fires_Month - lag(Number_of_Fires_Month))%>%
-  ungroup
-
-dat_months_stockholm_arson <- dat_months_stockholm_arson %>% 
-  group_by(Municipality_Name) %>%
-  mutate(Past_Month_Fires = lag(Number_of_Fires_Month))%>%
-  ungroup
-
+# Eliminate Na rows
+dat_months_stockholm <- dat_months_stockholm [!(dat_months_stockholm$Municipality_Name == "Stockholms läns kommuner (ovägt medel)"),]

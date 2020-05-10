@@ -16,13 +16,37 @@ require(stats)
 # Dummy variables estimators, equivalent fixed effects
 
 model_months <- lm(formula = dat_months_stockholm$Number_of_Fires_Month ~
-                    + dat_months_stockholm$Municipality_Name + dat_months_stockholm$Holidays + dat_months_stockholm$Temperature)
+                    dat_months_stockholm$Municipality_Name 
+                   + dat_months_stockholm$Holidays 
+                   + dat_months_stockholm$Temperature 
+                   + dat_months_stockholm$`Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,`
+                   + dat_months_stockholm$`Percentage_of_Adults_Claiming_Low-Income_Benefits_for_a_Long_Period_of_Time`
+                   + dat_months_stockholm$Percentage_of_16_to_84_Lacking_Trust_in_Others
+                   + dat_months_stockholm$Percentage_of_Students_without_the_Grades_to_be_admitted_into_Work_Related_High_School_Programs
+                   + dat_months_stockholm$Total_Number_of_Residents 
+                   + dat_months_stockholm$Percentage_of_Residents_Born_Outside_Sweden)
 
 model_months_2 <- glm(formula = dat_months_stockholm$Number_of_Fires_Month ~
-                     + dat_months_stockholm$Municipality_Name + dat_months_stockholm$Holidays + dat_months_stockholm$Temperature, family = "poisson")
+                              + dat_months_stockholm$Municipality_Name 
+                      + dat_months_stockholm$Holidays 
+                      + dat_months_stockholm$Temperature 
+                      + dat_months_stockholm$`Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,`
+                      + dat_months_stockholm$`Percentage_of_Adults_Claiming_Low-Income_Benefits_for_a_Long_Period_of_Time`
+                      + dat_months_stockholm$Percentage_of_16_to_84_Lacking_Trust_in_Others
+                      + dat_months_stockholm$Percentage_of_Students_without_the_Grades_to_be_admitted_into_Work_Related_High_School_Programs
+                      + dat_months_stockholm$Total_Number_of_Residents 
+                      + dat_months_stockholm$Percentage_of_Residents_Born_Outside_Sweden - 1, family = "poisson")
 
-model_months_3 <- glm.nb(formula = dat_months_stockholm$Number_of_Fires_Month ~
-                        + dat_months_stockholm$Municipality_Name + dat_months_stockholm$Holidays + dat_months_stockholm$Temperature)
+model_months_3 <- glm.nb(formula = dat_months_stockholm$Number_of_Fires_Month ~ 
+                                 dat_months_stockholm$Municipality_Name 
+                         + dat_months_stockholm$Holidays 
+                         + dat_months_stockholm$Temperature 
+                         + dat_months_stockholm$`Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,`
+                         + dat_months_stockholm$`Percentage_of_Adults_Claiming_Low-Income_Benefits_for_a_Long_Period_of_Time`
+                         + dat_months_stockholm$Percentage_of_16_to_84_Lacking_Trust_in_Others
+                         + dat_months_stockholm$Percentage_of_Students_without_the_Grades_to_be_admitted_into_Work_Related_High_School_Programs
+                         + dat_months_stockholm$Total_Number_of_Residents 
+                         + dat_months_stockholm$Percentage_of_Residents_Born_Outside_Sweden)
 
 summary(model_months)
 summary(model_months_2)
@@ -32,7 +56,14 @@ summary(model_months_3)
 # Classic panel models" 
 
 form <- (dat_months_stockholm$Number_of_Fires_Month ~
-        + dat_months_stockholm$Holidays + dat_months_stockholm$Temperature)
+        + dat_months_stockholm$Holidays 
+        + dat_months_stockholm$Temperature 
+        + dat_months_stockholm$`Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,`
+        + dat_months_stockholm$`Percentage_of_Adults_Claiming_Low-Income_Benefits_for_a_Long_Period_of_Time`
+        + dat_months_stockholm$Percentage_of_16_to_84_Lacking_Trust_in_Others
+        + dat_months_stockholm$Percentage_of_Students_without_the_Grades_to_be_admitted_into_Work_Related_High_School_Programs
+        + dat_months_stockholm$Total_Number_of_Residents 
+        + dat_months_stockholm$Percentage_of_Residents_Born_Outside_Sweden)
 
 form_2 <- (dat_months_stockholm$Number_of_Fires_Month ~
              + dat_months_stockholm$Temperature)
@@ -98,3 +129,8 @@ model_days_pglm_first_difference <- plm(form, data = dat_days_stockholm, model =
 
 phtest(model_days_plm_random, model_days_plm_fixed)
 
+
+
+
+
+                                                

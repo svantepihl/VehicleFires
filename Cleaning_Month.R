@@ -44,4 +44,5 @@ sum(dat_months_stockholm$Number_of_Fires_Month, na.rm = TRUE)
 sum(dat_months_stockholm$Number_of_Fires_Year, na.rm = TRUE) /12 
 
 
-
+# Eliminate Na rows
+dat_months_stockholm <- dat_months_stockholm [!(dat_months_stockholm$Municipality_Name == "Stockholms läns kommuner (ovägt medel)"),]

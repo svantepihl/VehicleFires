@@ -34,7 +34,7 @@ dat_inhabitants <- reshape(data=dat_inhabitants,idvar= c("Municipality", "Year")
                            direction="wide")
 
 dat_inhabitants$antal_20_30 <- rowSums (dat_inhabitants[,6:16])
-dat_inhabitants$andel_20_30 <- (dat_inhabitants$antal_20_30/dat_inhabitants$`Values.FÃ¶rÃ¤ndring i antal invÃ¥nare sen fÃ¶regÃ¥ende Ã¥r, andel (%)`) *100
+dat_inhabitants$andel_20_30 <- (dat_inhabitants$`Values.Invånare  totalt, antal`/dat_inhabitants$`Values.Förändring i antal invånare sen föregående år, andel (%)` *100)
 dat_inhabitants <- dat_inhabitants [, -c(6:16,18)]
 colnames(dat_inhabitants) <- c("Municipality", "Year", "Yearly_Change_in_Number_of_Residents_since_Previous_Year", "Total_Number_of_Residents", "Percentage_of_Residents_under_Twenty", "Percentage_of_residents_over_Sixty_Five", "Percentage_of_Residents_between_Twenty_and_Thirty" )
 

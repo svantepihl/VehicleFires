@@ -16,13 +16,13 @@ colnames(dat_msb) <- c("Date","DateTime", "isCar", "Municipality_Code", "Municip
 #Data cleaning - create separate year, quarter, month, day, hour and minute variables. 
 #dat_msb$Year <- year(dat_msb$Date)
 #dat_msb$Quarter <- quarter(dat_msb$Date)
-#dat_msb$Month <- month(dat_msb$Date)
+dat_msb$Month <- month(dat_msb$Date)
 #dat_msb$Day <- day(dat_msb$Date)
 dat_msb$Weekday <- weekdays(dat_msb$Date)
 #dat_msb$Hour <- hour(dat_msb$Date)
 #dat_msb$Minute <- minute(dat_msb$Date)
 dat_msb$Region_Code <- as.integer(as.integer(dat_msb$Municipality_Code)/100)
-#dat_msb$Week <- isoweek(dat_msb$Date)
+dat_msb$Week <- isoweek(dat_msb$Date)
 dat_msb$Date <- as.Date(dat_msb$Date)
 dat_msb$isCar[dat_msb$isCar=="Ja"] <- 1
 dat_msb$isCar[dat_msb$isCar=="Nej"] <- 0
@@ -184,4 +184,30 @@ dat_fires_stockholm_arson <- left_join(dat_stockholm[ ,-c(6)], Dates, by=c("Date
 dat_days_stockholm_arson <- left_join(Dates,Dat_Municipalities[,-6], by=c("Municipality_Code"))
 
 rm(FireCount,dat_holidays,dat_weather,i,j,Municipalities,dat_stockholm)
+
+
+# cleaning  necessary for municipality based models and time-series model , non-panel data. Use this part of cleaning also for the INGARCH models.
+colnames(dat_days_stockholm_arson) [12] <- "Number_of_Fires"
+colnames(dat_days_stockholm_arson)[16] <- "Region_Code"
+
+dat_days_stockholm_arson$Week <- isoweek(dat_days_stockholm_arson$Date)
+dat_days_stockholm_arson$Year <- year(dat_days_stockholm_arson$Date)
+dat_days_stockholm_arson$Month <- month(dat_days_stockholm_arson$Date)
+dat_days_stockholm_arson$Quarter <- quarter(dat_days_stockholm_arson$Date)
+
+split(dat_days_stockholm_arson, as.factor(dat_days_stockholm_arson$Weekday)) %>%lapply( "[", ,12)%>%lapply(mean)
+split(dat_days_stockholm_arson, as.factor(dat_days_stockholm_arson$Month)) %>%lapply( "[", ,12)%>%lapply(mean)
+split(dat_days_stockholm_arson, as.factor(dat_days_stockholm_arson$Quarter)) %>%lapply( "[", ,12)%>%lapply(mean)
+
+dat_days_stockholm_arson$First_Quarter <- 0
+dat_days_stockholm_arson$Second_Quarter <- 0
+dat_days_stockholm_arson$Third_Quarter <-0
+dat_days_stockholm_arson$Fourth_Quarter <- 0
+dat_days_stockholm_arson$Weekend <- 0
+
+dat_days_stockholm_arson[dat_days_stockholm_arson$Quarter == 1, "First_Quarter"] <- 1
+dat_days_stockholm_arson[dat_days_stockholm_arson$Quarter == 2, "Second_Quarter"] <- 1
+dat_days_stockholm_arson[dat_days_stockholm_arson$Quarter == 3, "Third_Quarter"] <- 1
+dat_days_stockholm_arson[dat_days_stockholm_arson$Quarter == 4, "Fourth_Quarter"] <- 1
+dat_days_stockholm_arson[dat_days_stockholm_arson$Weekday == "lördag" | dat_days_stockholm_arson$Weekday == "söndag", "Weekend"] <- 1
 

@@ -3,9 +3,11 @@ require(readxl)
 require(lubridate)
 require(svMisc)
 
-dat_msb <- read_excel("MSB/msb_2019.xlsx", col_types = c("date", 
+dat_msb <- read_excel("MSB/msb_2019.xlsx", encoding = "ISO-8859-1", col_types = c("date", 
                                                      "skip", "date", "text", "skip", "text", 
                                                      "text", "numeric", "text"))
+
+
 
 #colnames
 colnames(dat_msb) <- c("Date","DateTime", "isCar", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Reason")
@@ -29,10 +31,10 @@ dat_msb$isCar[dat_msb$isCar=="Nej"] <- 0
 
 
 # We rename the Reasons behind the carfires to english
-dat_msb$Reason[dat_msb$Reason != "Fel i utrustning"& dat_msb$Reason != "Avsiktlig brand"& dat_msb$Reason != "OkÃ¤nd"] <-"Other Reason"
+dat_msb$Reason[dat_msb$Reason != "Fel i utrustning"& dat_msb$Reason != "Avsiktlig brand"& dat_msb$Reason != "Okänd"] <-"Other Reason"
 dat_msb$Reason[dat_msb$Reason == "Avsiktlig brand"] <- "Arson"
 dat_msb$Reason[dat_msb$Reason == "Fel i utrustning"] <- "Technical Malfunctioning"
-dat_msb$Reason[dat_msb$Reason == "OkÃ¤nd"] <- "Unknown"
+dat_msb$Reason[dat_msb$Reason == "Okänd"] <- "Unknown"
 dat_msb$Reason <- as.factor(dat_msb$Reason)
 
 
