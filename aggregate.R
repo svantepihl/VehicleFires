@@ -52,4 +52,3 @@ dat_all_quarter <- dat_stockholm %>%
 dat_all_Year <- dat_stockholm %>%
   group_by(year(Date)) %>%
   count()
-
