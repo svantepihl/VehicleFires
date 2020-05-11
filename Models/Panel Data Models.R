@@ -21,6 +21,7 @@ full.model <- lm(Number_of_Fires_Month ~.-1, data = dat_months_stockholm_lm)
 
 # dat_months_stockholm_lm_impute <- dat_months_stockholm_lm[ , colSums(is.na(dat_months_stockholm_lm)) == 0] - coloumns with na values
 
+full.model <- lm(Number_of_Fires_Month ~.-1, data = dat_months_stockholm_lm)
 
 
 
