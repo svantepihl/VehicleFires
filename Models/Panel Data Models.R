@@ -14,8 +14,11 @@ require(lmtest)
 library(leaps)
 
 
+#create number of unemployed residents++ 
+dat_months_stockholm$Number_of_Unemployed_Residents_not_Looking_for_Work_or_Studying_16_64 <- dat_months_stockholm$Total_Number_of_Residents * dat_months_stockholm$`Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,`
+
 #remove unsed variables
-dat_months_stockholm_lm <- dat_months_stockholm[ ,-c(2,3,4,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,30,31,34,33,35,36,37,39,40,41,43,44,45,46,47,48)]
+dat_months_stockholm_lm <- dat_months_stockholm[ ,-c(2,3,4,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,30,31,33,34,35,36,37,39,40,41,43,44,45,46,47,48)]
 
 full.model <- lm(Number_of_Fires_Month ~.-1, data = dat_months_stockholm_lm)
 
@@ -23,11 +26,13 @@ full.model <- lm(Number_of_Fires_Month ~.-1, data = dat_months_stockholm_lm)
 
 full.model <- lm(Number_of_Fires_Month ~.-1, data = dat_months_stockholm_lm)
 
-
-
+dat_months_stockholm_lm <- na.omit(dat_months_stockholm_lm)
 summary(full.model)
+
+
 step.model <- stepAIC(full.model, direction = "both", 
                       trace = TRUE)
+
 
 
 
@@ -71,18 +76,12 @@ summary(model_months)
 summary(model_months_2)
 summary(model_months_3)
 
-
 # Classic panel models" 
 
 form <- (dat_months_stockholm$Number_of_Fires_Month ~
-        + dat_months_stockholm$Holidays 
-        + dat_months_stockholm$Temperature 
-        + dat_months_stockholm$`Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,`
-        + dat_months_stockholm$`Percentage_of_Adults_Claiming_Low-Income_Benefits_for_a_Long_Period_of_Time`
-        + dat_months_stockholm$Percentage_of_16_to_84_Lacking_Trust_in_Others
-        + dat_months_stockholm$Percentage_of_Students_without_the_Grades_to_be_admitted_into_Work_Related_High_School_Programs
-        + dat_months_stockholm$Total_Number_of_Residents 
-        + dat_months_stockholm$Percentage_of_Residents_Born_Outside_Sweden)
+           dat_months_stockholm$Temperature 
+         + dat_months_stockholm$`Median_Income_20+`
+         + dat_months_stockholm$`Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,`*dat_months_stockholm$Total_Number_of_Residents)
 
 form_2 <- (dat_months_stockholm$Number_of_Fires_Month ~
              + dat_months_stockholm$Temperature)
