@@ -10,11 +10,27 @@ require(zoo)
 require(pglm)
 require(forecast)
 require(stats)
+require(lmtest)
+library(leaps)
+
+
+#remove unsed variables
+dat_months_stockholm_lm <- dat_months_stockholm[ ,-c(2,3,4,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,30,31,34,33,35,36,37,39,40,41,43,44,45,46,47,48)]
+
+full.model <- lm(Number_of_Fires_Month ~.-1, data = dat_months_stockholm_lm)
+
+# dat_months_stockholm_lm_impute <- dat_months_stockholm_lm[ , colSums(is.na(dat_months_stockholm_lm)) == 0] - coloumns with na values
+
+
+
+
+summary(full.model)
+step.model <- stepAIC(full.model, direction = "both", 
+                      trace = TRUE)
 
 
 
 # Dummy variables estimators, equivalent fixed effects
-
 model_months <- lm(formula = dat_months_stockholm$Number_of_Fires_Month ~
                     dat_months_stockholm$Municipality_Name 
                    + dat_months_stockholm$Holidays 
@@ -25,6 +41,8 @@ model_months <- lm(formula = dat_months_stockholm$Number_of_Fires_Month ~
                    + dat_months_stockholm$Percentage_of_Students_without_the_Grades_to_be_admitted_into_Work_Related_High_School_Programs
                    + dat_months_stockholm$Total_Number_of_Residents 
                    + dat_months_stockholm$Percentage_of_Residents_Born_Outside_Sweden)
+
+
 
 model_months_2 <- glm(formula = dat_months_stockholm$Number_of_Fires_Month ~
                               + dat_months_stockholm$Municipality_Name 

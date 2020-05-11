@@ -3,11 +3,11 @@ require(readxl)
 require(lubridate)
 require(svMisc)
 
-dat_msb <- read_excel("MSB/msb_2019.xlsx", encoding = "ISO-8859-1", col_types = c("date", 
+dat_msb <- read_excel("MSB/msb_2019.xlsx", col_types = c("date", 
                                                      "skip", "date", "text", "skip", "text", 
                                                      "text", "numeric", "text"))
 
-
+#encoding = "ISO-8859-1" <- För leo att lägga till 
 
 #colnames
 colnames(dat_msb) <- c("Date","DateTime", "isCar", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Reason")
@@ -229,5 +229,5 @@ dat_days_stockholm[dat_days_stockholm$Quarter == 1, "First_Quarter"] <- 1
 dat_days_stockholm[dat_days_stockholm$Quarter == 2, "Second_Quarter"] <- 1
 dat_days_stockholm[dat_days_stockholm$Quarter == 3, "Third_Quarter"] <- 1
 dat_days_stockholm[dat_days_stockholm$Quarter == 4, "Fourth_Quarter"] <- 1
-dat_days_stockholm[dat_days_stockholm$Weekday == "lÃ¶rdag" | dat_days_stockholm$Weekday == "sÃ¶ndag", "Weekend"] <- 1
+dat_days_stockholm[dat_days_stockholm$Weekday == "lördag" | dat_days_stockholm$Weekday == "söndag", "Weekend"] <- 1
 
