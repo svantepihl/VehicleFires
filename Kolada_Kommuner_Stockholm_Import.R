@@ -90,9 +90,9 @@ dat_stockholm_kolada$Municipality <- as.factor(dat_stockholm_kolada$Municipality
 dat_stockholm_kolada$Year <- as.numeric(dat_stockholm_kolada$Year)
 
 dat_stockholm_kolada <- left_join(dat_kolada_3, dat_stockholm_kolada, by = c("Year", "Municipality"))
-#rm(dat_kolada_3)
+rm(dat_kolada_3)
 
-#rm(Number_of_Fires, Dat_Municipalities, Kommuner)
+rm(Number_of_Fires, Dat_Municipalities, Kommuner)
 
 colnames(dat_stockholm_kolada) [1] <- "Municipality_Name"
 colnames(dat_stockholm_kolada) [30] <-"Number_of_Fires_Year"
