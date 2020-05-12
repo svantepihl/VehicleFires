@@ -16,7 +16,7 @@ Kommuner_stockholm <- reshape(data=Kommuner_stockholm,idvar= c("Municipality", "
 Kommuner_stockholm <- Kommuner_stockholm[,-19]
 colnames(Kommuner_stockholm) <- c("Municipality", "Year", "Number_of_Expert_Employees", "Percentage_of_Expert_Employees", "Regional_GDP_per_Capita", "Percentage of Non-Workforce",
                                   "Percentage_of_Students_without_the_Grades_to_be_admitted_into_Work_Related_High_School_Programs", "Percentage_of_Active_Workforce", "Percentage of 0-19 People Living in Poor Households",
-                                  "Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,", "Percentage_of_16_to_84_Lacking_Trust_in_Others", "Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_17_24",
+                                  "Percentage_of_Unemployed_16_64,", "Percentage_of_16_to_84_Lacking_Trust_in_Others", "Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_17_24",
                                   "Percentage_of_16_64_with_Low_Income", "Amount_of_Benefits_Claimed", "Percentage_of_16_24_in_Long_Term_Unemployment", "Median_Income_20+","Percentage_of_Residents_Born_Outside_Sweden", 
                                   "Percentage_of_Adults_Claiming_Low-Income_Benefits_for_a_Long_Period_of_Time")  
 

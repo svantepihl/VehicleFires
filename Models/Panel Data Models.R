@@ -18,7 +18,7 @@ library(leaps)
 dat_months_stockholm$Number_of_Unemployed_Residents_not_Looking_for_Work_or_Studying_16_64 <- dat_months_stockholm$Total_Number_of_Residents * dat_months_stockholm$`Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,`
 
 #remove unsed variables
-dat_months_stockholm_lm <- dat_months_stockholm[ ,-c(2,3,4,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,30,31,33,34,35,36,37,39,40,41,43,44,45,46,47,48)]
+dat_months_stockholm_lm <- dat_months_stockholm[ ,-c(2,3,4,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,30,31,33,34,35,36,37,39,40,41,43,44,45,46,47,48,49)]
 
 full.model <- lm(Number_of_Fires_Month ~.-1, data = dat_months_stockholm_lm)
 
@@ -39,7 +39,6 @@ step.model <- stepAIC(full.model, direction = "both",
 # Dummy variables estimators, equivalent fixed effects
 model_months <- lm(formula = dat_months_stockholm$Number_of_Fires_Month ~
                     dat_months_stockholm$Municipality_Name 
-                   + dat_months_stockholm$Holidays 
                    + dat_months_stockholm$Temperature 
                    + dat_months_stockholm$`Percentage_of_Unemployed_and_Not_Looking_for_Work_or_Studying_16_64,`
                    + dat_months_stockholm$`Percentage_of_Adults_Claiming_Low-Income_Benefits_for_a_Long_Period_of_Time`
