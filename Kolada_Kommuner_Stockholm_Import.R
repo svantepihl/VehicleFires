@@ -81,21 +81,18 @@ colnames(dat_kolada_3) <- c("Municipality", "Year", "Meters_of_Car_Roads_per_Per
 rm(Kolada_3)
 
 dat_kolada_3$Year <- dat_kolada_3$Year%>% as.character()%>%as.integer()
-dat_kolada_4 <- filter(dat_kolada_3, dat_kolada_3$Year == 2019)
-dat_kolada_3 <- filter(dat_kolada_3, dat_kolada_3$Year > 2011)
+dat_kolada_3 <- filter(dat_kolada_3, dat_kolada_3$Year > 2011 & dat_kolada_3$Year < 2019)
 
-dat_kolada_4$Municipality <- as.factor(dat_kolada_4$Municipality)
-dat_kolada_4$Year <- as.numeric(dat_kolada_4$Year)
+
 dat_kolada_3$Municipality <- as.factor(dat_kolada_3$Municipality)
 dat_kolada_3$Year <- as.numeric(dat_kolada_3$Year)
 dat_stockholm_kolada$Municipality <- as.factor(dat_stockholm_kolada$Municipality)
-dat_stockholm_kolada$Year <- as.numeric(dat_stockholm_kolada_2019)
+dat_stockholm_kolada$Year <- as.numeric(dat_stockholm_kolada$Year)
 
 dat_stockholm_kolada <- left_join(dat_kolada_3, dat_stockholm_kolada, by = c("Year", "Municipality"))
-dat_stockholm_kolada_2019 <- left_join(dat_kolada_4, dat_stockholm_kolada, by = c("Year", "Municipality"))
-rm(dat_kolada_3)
-rm(dat_kolada_4)
-rm(Number_of_Fires, Dat_Municipalities, Kommuner)
+#rm(dat_kolada_3)
+
+#rm(Number_of_Fires, Dat_Municipalities, Kommuner)
 
 colnames(dat_stockholm_kolada) [1] <- "Municipality_Name"
 colnames(dat_stockholm_kolada) [30] <-"Number_of_Fires_Year"
