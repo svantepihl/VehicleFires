@@ -1,7 +1,7 @@
 require(tidyverse)
 require(readxl)
 require(lubridate)
-require(svMisc)
+#require(svMisc)
 
 dat_msb <- read_excel("MSB/msb_2019.xlsx", col_types = c("date", 
                                                      "skip", "date", "text", "skip", "text", 
@@ -85,7 +85,7 @@ Dates <- data.frame(Date=as.Date(character(), format="%Y-%m-%d"),
 
 
 for (i in 1:length(Municipalities)) {
-  temp <- data.frame(seq(as.Date("2012/1/1"), as.Date("2018/12/31"), "day"))
+  temp <- data.frame(seq(as.Date("2012/1/1"), as.Date("2019/12/31"), "day"))
   temp[,2] <- Municipalities[i]
   names(temp) <- c("Date", "Municipality_Code")
   Dates <- rbind(Dates, temp)
@@ -103,7 +103,13 @@ dat_weather <- read_excel("Weather/Weather.xlsx",
                           sheet = "ALL", col_types = c("skip", 
                                                        "text", "date", "text", "text", 
                                                        "skip"))
+
 dat_weather$Date <- as.Date(dat_weather$Date)
+
+dat_weather_2019 <- subset(dat_weather, year(dat_weather$Date) == 2018)
+dat_weather_2019$Date <- dat_weather_2019$Date + years(1)
+dat_weather <- full_join(dat_weather,dat_weather_2019)
+rm(dat_weather_2019)
 Dates <- left_join(Dates, dat_weather, by=c("Date","Municipality_Code"))
   
 Dates$Temperature <- as.numeric(Dates$Temperature)
@@ -140,7 +146,6 @@ dat_holidays <- na.omit(dat_holidays)
 
 # Loop through datset and check if a valid holiday value
 for(i in 1:nrow(Dates)) {
-  progress(i/(66482/100))
   for(j in 1:nrow(dat_holidays)){
     if(year(Dates$Date[i]) == dat_holidays$Year[j]) {
       if(Dates$Municipality_Code[i] == dat_holidays$Municipality_Code[j]) {
@@ -186,10 +191,7 @@ for(i in 1:nrow(Dates)) {
 }
 
 
-# Subset fires from Skåne, Västra Götland and Stockholm
-
-#dat_skåne <- filter(dat_msb, dat_msb$Region_Code == 12)
-#dat_göteborg <- filter(dat_msb, dat_msb$Region_Code == 14)
+# Subset fires in Stockholm
 dat_stockholm <- filter(dat_msb, as.integer(as.integer(dat_msb$Municipality_Code)/100) == 01)
 
 

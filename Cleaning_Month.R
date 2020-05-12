@@ -28,8 +28,10 @@ dat_months_stockholm <- dat_days_stockholm[, c(2, 4:13, 15:25)] %>% group_by(Yea
 
 #Data cleaning for this file 
 dat_months_stockholm$Date <- as.yearmon(paste(dat_months_stockholm$Year, dat_months_stockholm$Month), "%Y %m")
+dat_months_stockholm$Date <- as.yearmon(paste(dat_months_stockholm$Year, dat_months_stockholm$Month), "%Y %m")
 
 dat_months_stockholm <-merge (dat_months_stockholm, dat_stockholm_kolada,  by= c("Municipality_Name", "Year"), all.y=TRUE)
+
 
 colnames(dat_months_stockholm) [17] <- "Number_of_Fires_Month"
 dat_months_stockholm$Month <- as.factor(dat_months_stockholm$Month)
