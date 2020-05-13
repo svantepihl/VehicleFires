@@ -18,45 +18,45 @@ require(sjstats)
 
 
 # Dummy variables estimators, equivalent fixed effects
+
 model_months <- lm(formula = dat_months_stockholm$Number_of_Fires_Month ~ 
-                   + dat_months_stockholm$Municipality_Name
+                   +  dat_months_stockholm$Municipality_Name 
                    + dat_months_stockholm$Temperature
                    + dat_months_stockholm$Percentage_of_Unemployed_18_64
                    + dat_months_stockholm$Total_Number_of_Residents
                    + dat_months_stockholm$Median_Income_20plus)
 
+# Summary with robust errors
+lmtest::coeftest(model_months, vcov. = sandwich::vcovHC(model_months, type = 'HC1'))
 
 
-model_months_2 <- glm(formula = dat_months_stockholm$Number_of_Fires_Month ~
+model_months_poi <- glm(formula = dat_months_stockholm$Number_of_Fires_Month ~
                         dat_months_stockholm$Municipality_Name 
                       + dat_months_stockholm$Temperature 
-                      + dat_months_stockholm$Month
                       + dat_months_stockholm$Percentage_of_Unemployed_18_64
                       +dat_months_stockholm$Total_Number_of_Residents-1, family = "poisson")
 
-model_months_3 <- glm.nb(formula = dat_months_stockholm$Number_of_Fires_Month ~
+# Summary with robust errors
+lmtest::coeftest(model_months_poi, vcov. = sandwich::vcovHC(model_months_poi, type = 'HC1'))
+
+model_months_nb <- glm.nb(formula = dat_months_stockholm$Number_of_Fires_Month ~
                            dat_months_stockholm$Municipality_Name 
                          + dat_months_stockholm$Temperature 
-                         + dat_months_stockholm$Month
                          + dat_months_stockholm$Percentage_of_Unemployed_18_64
                          +dat_months_stockholm$Total_Number_of_Residents -1)
 
-summary(model_months)
-summary(model_months_2)
-summary(model_months_3)
+# Summary with robust errors
+lmtest::coeftest(model_months_nb, vcov. = sandwich::vcovHC(model_months_nb, type = 'HC1'))
 
 vif(model_months) #remember to take away muncipality names
 
 # Classic panel models" 
-
 form <- (dat_months_stockholm$Number_of_Fires_Month ~
            dat_months_stockholm$Temperature
          + dat_months_stockholm$Percentage_of_Unemployed_18_64
          + dat_months_stockholm$Total_Number_of_Residents
          +dat_months_stockholm$Median_Income_20plus)
 
-form_2 <- (dat_months_stockholm$Number_of_Fires_Month ~
-             + dat_months_stockholm$Temperature)
 
 model_months_plm_random <- plm(form, data = dat_months_stockholm, model = "random", index = c("Municipality_Name","Date"))
 model_months_plm_fixed <- plm(form, data = dat_months_stockholm, model = "within", index = c("Municipality_Name","Date"))
