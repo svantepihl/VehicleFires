@@ -88,3 +88,45 @@ dat_months_stockholm_arson <- dat_months_stockholm_arson %>%
   group_by(Municipality_Name) %>%
   mutate(Past_Month_Fires = lag(Number_of_Fires_Month))%>%
   ungroup
+
+
+
+
+
+#days
+
+form <- (dat_days_stockholm$Number_of_Fires ~  dat_days_stockholm$Temperature
+         + dat_days_stockholm$Holidays)
+
+form_2 <- (dat_days_stockholm$Number_of_Fires ~
+             + dat_months_stockholm$Temperature
+           + dat_months_stockholm$Percentage_of_Unemployed_18_64
+           + dat_months_stockholm$Total_Number_of_Residents
+           + dat_months_stockholm$Median_Income_20plus)
+
+model_days_plm_random <- plm(form, data = dat_days_stockholm, model = "random", index = c("Municipality_Name","Date"))
+model_days_plm_fixed <- plm(form, data = dat_days_stockholm, model = "within", index = c("Municipality_Name","Date"))
+model_days_plm_pooled <- plm(form, data = dat_days_stockholm, model = "pooling", index = c("Municipality_Name", "Date"))
+model_days_plm_first_difference <- plm(form, data = dat_days_stockholm, model = "fd", index = c("Municipality_Name", "Date"))
+
+summary(model_days_plm_random)
+summary(model_days_plm_fixed)
+summary(model_days_plm_pooled)
+summary(model_days_plm_first_difference)
+
+model_days_pglm_random <- pglm(form, data = dat_days_stockholm, model = "random", family = "poisson", index = c("Municipality_Name","Date"))
+model_days_pglm_fixed <- plm(form, data = dat_days_stockholm, model = "within", family= "poisson",index = c("Municipality_Name","Date"))
+model_days_pglm_pooled <- plm(form, data = dat_days_stockholm, model = "pooling",family = "poisson",  index = c("Municipality_Name", "Date"))
+model_days_pglm_first_difference <- plm(form, data = dat_days_stockholm, model = "fd",family= "poisson", index = c("Municipality_Name", "Date"))
+
+summary(model_days_pglm_random)
+summary(model_days_pglm_fixed)
+summary(model_days_pglm_pooled)
+summary(model_days_pglm_first_difference)
+
+model_days_pglm_random <- pglm(form, data = dat_days_stockholm, model = "random", family = "negbin", index = c("Municipality_Name","Date"))
+model_days_pglm_fixed <- plm(form, data = dat_days_stockholm, model = "within", family= "negbin",index = c("Municipality_Name","Date"))
+model_days_pglm_pooled <- plm(form, data = dat_days_stockholm, model = "pooling",family = "negbin",  index = c("Municipality_Name", "Date"))
+model_days_pglm_first_difference <- plm(form, data = dat_days_stockholm, model = "fd",family= "negbin", index = c("Municipality_Name", "Date"))
+
+
