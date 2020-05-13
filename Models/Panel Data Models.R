@@ -10,10 +10,10 @@ require(stats)
 require(lmtest)
 require(car)
 require(sandwich)
+require(lubridate)
 
-dat_months_stockholm_full <- dat_months_stockholm
 
-dat_months_stockholm <- dat_months_stockholm[ ,c(1,2,3,5,17,19,20,21,23)]
+
 
 # Dummy variables estimators, equivalent fixed effects
 
