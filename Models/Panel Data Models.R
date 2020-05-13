@@ -1,7 +1,4 @@
 require(tidyverse)
-require(ggplot2)
-require(survival)
-require(lubridate)
 require(MASS)
 require(lmtest)
 require(xts)
@@ -11,11 +8,12 @@ require(pglm)
 require(forecast)
 require(stats)
 require(lmtest)
-library(leaps)
 require(car)
 require(sandwich)
-require(sjstats)
 
+dat_months_stockholm_full <- dat_months_stockholm
+
+dat_months_stockholm <- dat_months_stockholm[ ,c(1,2,3,5,17,19,20,21,23)]
 
 # Dummy variables estimators, equivalent fixed effects
 
