@@ -1,9 +1,9 @@
 #for Leo's computer
 
-#getOption("encoding")
-#options(encoding = "ISO-8859-1")
+getOption("encoding")
+options(encoding = "ISO-8859-1")
 
-#Sys.setlocale(category = "LC_ALL", locale = "Swedish")
+Sys.setlocale(category = "LC_ALL", locale = "Swedish")
 
 # Load data 
 source("all fires Import and Clean.r")

@@ -45,9 +45,5 @@ mean(dat_months_stockholm$Number_of_Fires_Month, na.rm =TRUE)
 sum(dat_months_stockholm$Number_of_Fires_Month, na.rm = TRUE)
 sum(dat_months_stockholm$Number_of_Fires_Year, na.rm = TRUE) /12 
 
-
-# Eliminate Na rows
-dat_months_stockholm <- dat_months_stockholm [!(dat_months_stockholm$Municipality_Name == "Stockholms läns kommuner (ovägt medel)"),]
-
 dat_months_stockholm_2018 <- subset(dat_months_stockholm,dat_months_stockholm$Year == 2018)
 dat_months_stockholm <- subset(dat_months_stockholm,dat_months_stockholm$Year != 2018)

@@ -71,7 +71,7 @@ dat_msb_for_Kolada <- dat_msb
 
 
 #Stockholm
-dat_msb <- subset(dat_msb, year(dat_msb$Date)>2011)
+dat_msb <- subset(dat_msb, year(dat_msb$Date)>2004)
 
 
 #Remove municipality info from dat_msb
@@ -85,7 +85,7 @@ Dates <- data.frame(Date=as.Date(character(), format="%Y-%m-%d"),
 
 
 for (i in 1:length(Municipalities)) {
-  temp <- data.frame(seq(as.Date("2012/1/1"), as.Date("2019/12/31"), "day"))
+  temp <- data.frame(seq(as.Date("2005/1/1"), as.Date("2019/12/31"), "day"))
   temp[,2] <- Municipalities[i]
   names(temp) <- c("Date", "Municipality_Code")
   Dates <- rbind(Dates, temp)
