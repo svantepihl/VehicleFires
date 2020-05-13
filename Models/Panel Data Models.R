@@ -12,6 +12,9 @@ require(forecast)
 require(stats)
 require(lmtest)
 library(leaps)
+require(car)
+require(sandwich)
+require(sjstats)
 
 
 #remove unsed variables
@@ -34,12 +37,11 @@ plot(step.model$residuals)
 
 
 # Dummy variables estimators, equivalent fixed effects
-model_months <- lm(formula = dat_months_stockholm$Number_of_Fires_Month ~
-                    dat_months_stockholm$Municipality_Name 
-                   + dat_months_stockholm$Temperature 
-                   + dat_months_stockholm$Month
+model_months <- lm(formula = dat_months_stockholm$Number_of_Fires_Month ~ 
+                   + dat_months_stockholm$Temperature
                    + dat_months_stockholm$Percentage_of_Unemployed_18_64
-                   + dat_months_stockholm$Total_Number_of_Residents)
+                   + dat_months_stockholm$Total_Number_of_Residents
+                   + dat_months_stockholm$Median_Income_20plus)
 
 
 
@@ -83,57 +85,45 @@ summary(model_months_plm_pooled)
 summary(model_months_plm_first_difference)
 
 
-model_months_pglm_random <- pglm(form, data = dat_months_stockholm, model = "random", family = "poisson", index = c("Municipality_Name","Date"))
-model_months_pglm_fixed <- pglm(form, data = dat_months_stockholm, model = "within", family= "poisson", index = c("Municipality_Name","Date"))
-model_months_pglm_pooled <- pglm(form, data = dat_months_stockholm, model = "pooling", family= "poisson", index = c("Municipality_Name", "Date"))
-model_months_pglm_first_difference <- pglm(form, data = dat_months_stockholm, model = "fd",family = "poisson", index = c("Municipality_Name", "Date"))
+lmtest::coeftest(model_months_plm_fixed, vcov. = sandwich::vcovHC(model_months_plm_fixed, type = 'HC1'))
+lmtest::coeftest(model_months_plm_first_difference, vcov. = sandwich::vcovHC(model_months_plm_fixed, type = 'HC1'))
 
-summary(model_months_pglm_random)
-summary(model_months_pglm_fixed)
-summary(model_months_pglm_pooled)
-summary(model_months_pglm_first_difference)
 
+model_months_poisson_random <- pglm(form, data = dat_months_stockholm, model = "random", family = "poisson", index = c("Municipality_Name","Date"))
+model_months_poisson_fixed <- pglm(form, data = dat_months_stockholm, model = "within", family= "poisson", index = c("Municipality_Name","Date"))
+model_months_poisson_pooled <- pglm(form, data = dat_months_stockholm, model = "pooling", family= "poisson", index = c("Municipality_Name", "Date"))
+model_months_poisson_first_difference <- pglm(form, data = dat_months_stockholm, model = "fd",family = "poisson", index = c("Municipality_Name", "Date"))
+
+summary(model_months_poisson_random)
+summary(model_months_poisson_fixed)
+summary(model_months_poisson_pooled)
+summary(model_months_poisson_first_difference)
+
+
+lmtest::coeftest(model_months_poisson_fixed, vcov. = sandwich::vcovHC(model_months_plm_fixed, type = 'HC1'))
+lmtest::coeftest(model_months_poisson_first_difference, vcov. = sandwich::vcovHC(model_months_plm_fixed, type = 'HC1'))
+
+
+
+model_months_neg_bin_random <- pglm(form, data = dat_months_stockholm, model = "random", family = "poisson", index = c("Municipality_Name","Date"))
+model_months_neg_bin_fixed <- pglm(form, data = dat_months_stockholm, model = "within", family= "poisson", index = c("Municipality_Name","Date"))
+model_months_neg_bin_pooled <- pglm(form, data = dat_months_stockholm, model = "pooling", family= "poisson", index = c("Municipality_Name", "Date"))
+model_months_neg_bin_first_difference <- pglm(form, data = dat_months_stockholm, model = "fd",family = "poisson", index = c("Municipality_Name", "Date"))
+
+summary(model_months_neg_bin_random)
+summary(model_months_neg_bin_fixed)
+summary(model_months_neg_bin_pooled)
+summary(model_months_neg_bin_first_difference)
+
+
+lmtest::coeftest(model_months_neg_bin_fixed, vcov. = sandwich::vcovHC(model_months_plm_fixed, type = 'HC1'))
+lmtest::coeftest(model_months_neg_bin_first_difference, vcov. = sandwich::vcovHC(model_months_plm_fixed, type = 'HC1'))
 
 phtest(model_months_plm_random, model_months_plm_fixed)
 
-
-#days
-
-form <- (dat_days_stockholm$Number_of_Fires ~  dat_days_stockholm$Temperature
-         + dat_days_stockholm$Holidays)
-
-form_2 <- (dat_days_stockholm$Number_of_Fires ~
-             + dat_days_stockholm$Temperature)
-
-model_days_plm_random <- plm(form, data = dat_days_stockholm, model = "random", index = c("Municipality_Name","Date"))
-model_days_plm_fixed <- plm(form, data = dat_days_stockholm, model = "within", index = c("Municipality_Name","Date"))
-model_days_plm_pooled <- plm(form, data = dat_days_stockholm, model = "pooling", index = c("Municipality_Name", "Date"))
-model_days_plm_first_difference <- plm(form, data = dat_days_stockholm, model = "fd", index = c("Municipality_Name", "Date"))
-
-summary(model_days_plm_random)
-summary(model_days_plm_fixed)
-summary(model_days_plm_pooled)
-summary(model_days_plm_first_difference)
-
-model_days_pglm_random <- pglm(form, data = dat_days_stockholm, model = "random", family = "poisson", index = c("Municipality_Name","Date"))
-model_days_pglm_fixed <- plm(form, data = dat_days_stockholm, model = "within", family= "poisson",index = c("Municipality_Name","Date"))
-model_days_pglm_pooled <- plm(form, data = dat_days_stockholm, model = "pooling",family = "poisson",  index = c("Municipality_Name", "Date"))
-model_days_pglm_first_difference <- plm(form, data = dat_days_stockholm, model = "fd",family= "poisson", index = c("Municipality_Name", "Date"))
-
-summary(model_days_pglm_random)
-summary(model_days_pglm_fixed)
-summary(model_days_pglm_pooled)
-summary(model_days_pglm_first_difference)
-
-model_days_pglm_random <- pglm(form, data = dat_days_stockholm, model = "random", family = "negbin", index = c("Municipality_Name","Date"))
-model_days_pglm_fixed <- plm(form, data = dat_days_stockholm, model = "within", family= "negbin",index = c("Municipality_Name","Date"))
-model_days_pglm_pooled <- plm(form, data = dat_days_stockholm, model = "pooling",family = "negbin",  index = c("Municipality_Name", "Date"))
-model_days_pglm_first_difference <- plm(form, data = dat_days_stockholm, model = "fd",family= "negbin", index = c("Municipality_Name", "Date"))
-
-
 phtest(model_days_plm_random, model_days_plm_fixed)
 
-
+vif(model_months_plm_fixed)
 
 
 
