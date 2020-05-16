@@ -45,7 +45,7 @@ mean(dat_months_stockholm$Number_of_Fires_Month, na.rm =TRUE)
 sum(dat_months_stockholm$Number_of_Fires_Month, na.rm = TRUE)
 sum(dat_months_stockholm$Number_of_Fires_Year, na.rm = TRUE) /12 
 
-dat_months_stockholm_2018 <- subset(dat_months_stockholm,dat_months_stockholm$Year == 2018)
+
 
 
 
@@ -98,5 +98,29 @@ for (i in 1:nrow(dat_months_stockholm)) {
   }
 }
 
+# Adjust income for inflation
+library(readr)
+KPI <- read_delim("Kommundata/KPI.csv", ";", escape_double = FALSE, trim_ws = TRUE)
+
+
+for (i in 1:nrow(dat_months_stockholm)) {
+  Year = dat_months_stockholm$Year[i]
+  Mon = as.numeric(dat_months_stockholm$Month[i])
+  KPI_corr <- KPI[KPI$År==Year, c(Mon+1)]
+  value <- as.character(KPI_corr[1,1])
+  value <- gsub("\\s", "", value) 
+  value <- as.double(value)
+  dat_months_stockholm$Adj_Median_income_20plus[i] <- dat_months_stockholm$Median_Income_20plus[i] / value
+}
+
+rm(Year,Mon,KPI_corr,value,i,IncChange,PastMonth,PastYear,UnEmpChange,ResChange,KPI,tempMonth,MunicipalityJan)
+
+dat_months_stockholm$Log_Total_Number_of_Residents <- log(dat_months_stockholm$Total_Number_of_Residents)
+dat_months_stockholm$Log_Median_Income_20plus <- log(dat_months_stockholm$Median_Income_20plus)
+dat_months_stockholm$Total_Number_of_1000_Residents <- (dat_months_stockholm$Total_Number_of_Residents) /1000
+dat_months_stockholm$Median_Income_20plus_times1000 <- log(dat_months_stockholm$Median_Income_20plus) * 1000
+
 #Remove 2018
+dat_months_stockholm_2018 <- subset(dat_months_stockholm,dat_months_stockholm$Year == 2018)
+
 dat_months_stockholm <- subset(dat_months_stockholm,dat_months_stockholm$Year != 2018)
