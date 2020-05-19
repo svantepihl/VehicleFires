@@ -1,16 +1,21 @@
 #for Leo's computer
+#getOption("encoding")
+#options(encoding = "ISO-8859-1")
 
-getOption("encoding")
-options(encoding = "ISO-8859-1")
+#Sys.setlocale(category = "LC_ALL", locale = "Swedish")
 
-Sys.setlocale(category = "LC_ALL", locale = "Swedish")
+##### IMPORT NOTE IT TAKES 5-15 MINUTES TO RUN #####
+if(file.exists("DATA/dat_months_stockholm_all.csv")){
+  dat_months_stockholm_all <- read_csv("DATA/dat_months_stockholm_all.csv")
+  dat_months_stockholm_all$Date <- as.yearmon(dat_months_stockholm_all$Date)
+  
+  dat_months_stockholm_2018 <- subset(dat_months_stockholm_all,dat_months_stockholm_all$Year == 2018)
+  dat_months_stockholm <- subset(dat_months_stockholm_all,dat_months_stockholm_all$Year != 2018)
+} else {
+  print("LOADING DATA DURIATION APPROX 15 MIN")
+  source("ImportCleanWrangle.R")
+}
 
-# Load data 
-source("all fires Import and Clean.r")
-
-# Add municipality info (colada)
-source("Kolada_Kommuner_Stockholm_import.R")
-
-# Add months info (fires by month)
-source("Cleaning_Month.R")
+# Get predictions for model
+source("Predict.R")
 
