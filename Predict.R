@@ -1,3 +1,8 @@
+require(MASS)
+require(pglm)
+require(plm)
+require(lmtest)
+require(sandwich)
 # Define form
 form <- (dat_months_stockholm$Number_of_Fires_Month ~
            dat_months_stockholm$Temperature

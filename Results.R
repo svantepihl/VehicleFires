@@ -148,7 +148,6 @@ model_months_negbin_fixed <- pglm(form, data = dat_months_stockholm, model = "wi
 summary(model_months_negbin_fixed, dispersion = 12.7824)
 
 
-
 rm(model_months_negbin_fixed,model_months_negbin_pooled,model_months_negbin_random,model_months_negbin_fixed_dummy)
 
 
