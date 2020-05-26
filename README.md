@@ -1,4 +1,4 @@
-# VehicleFires
+# An Empirical Comparison of Static CountPanel Data Models: the Case of Vehicle Firesin the Stockholm County.
 BSc thesis in statistics (Uppsala University)
 
 Svante Pihl
