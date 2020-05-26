@@ -1,13 +1,12 @@
 require(tidyverse)
 require(readxl)
 require(lubridate)
-#require(svMisc)
 
-dat_msb <- read_excel("MSB/msb_2019.xlsx", col_types = c("date", 
+dat_msb <- read_excel("DATA/MSB/msb_2019.xlsx", col_types = c("date", 
                                                          "skip", "date", "text", "skip", "text", 
                                                          "text", "numeric", "text"))
 
-#encoding = "ISO-8859-1" <- För leo att lägga till 
+#encoding = "ISO-8859-1" <-  if issues with encoding
 
 #colnames
 colnames(dat_msb) <- c("Date","DateTime", "isCar", "Municipality_Code", "Municipality_Name", "Type_of_Municipality_Code", "Reason")
@@ -99,7 +98,7 @@ for (i in 1:nrow(Dates)) {
 
 
 #### ADD WEATHER
-dat_weather <- read_excel("Weather/Weather.xlsx", 
+dat_weather <- read_excel("DATA/Weather/Weather.xlsx", 
                           sheet = "ALL", col_types = c("skip", 
                                                        "text", "date", "text", "text", 
                                                        "skip"))
@@ -135,7 +134,7 @@ Dates$Summer_Holidays <- as.logical(Dates$Summer_Holidays)
 Dates$Autumn_Holidays <- numeric(length(Dates$Date))
 Dates$Autumn_Holidays <- as.logical(Dates$Autumn_Holidays)
 
-dat_holidays <- read_excel("Holidays/Skollov.xlsx", 
+dat_holidays <- read_excel("DATA/Holidays/Skollov.xlsx", 
                            col_types = c("numeric", "text", "text", 
                                          "date", "date", "date", "date", 
                                          "date", "date", "date", 
@@ -241,7 +240,7 @@ require(reshape)
 require(MASS)
 require(readxl)
 
-Kolada_2005 <- read_excel("Kommundata/Kolada_2005.xlsx", 
+Kolada_2005 <- read_excel("DATA/MunicipalityData/Kolada_2005.xlsx", 
                           skip = 1)
 
 Kolada_2005 <- data.frame(Kolada_2005[1:2], stack(Kolada_2005[3:ncol(Kolada_2005)]))
@@ -389,13 +388,13 @@ for (i in 1:nrow(dat_months_stockholm)) {
 
 # Adjust income for inflation
 library(readr)
-KPI <- read_delim("Kommundata/KPI.csv", ";", escape_double = FALSE, trim_ws = TRUE)
+KPI <- read_delim("DATA/MunicipalityData/KPI.csv", ";", escape_double = FALSE, trim_ws = TRUE)
 
 
 for (i in 1:nrow(dat_months_stockholm)) {
   Year = dat_months_stockholm$Year[i]
   Mon = as.numeric(dat_months_stockholm$Month[i])
-  KPI_corr <- KPI[KPI$År==Year, c(Mon+1)]
+  KPI_corr <- KPI[KPI$�r==Year, c(Mon+1)]
   value <- as.character(KPI_corr[1,1])
   value <- gsub("\\s", "", value) 
   value <- as.double(value)

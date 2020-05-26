@@ -38,6 +38,7 @@ temp$PredictionRandomEffect <- (temp$RandomEffect + model_months_plm_random$coef
 model_months_plm_pooled_alt <- lm(form_intercept)
 summary(model_months_plm_pooled_alt)
 
+hist(model_months_plm_pooled_alt$residuals)
 temp$PredictionPooled <- (model_months_plm_pooled_alt$coefficients[1] 
                          + model_months_plm_pooled_alt$coefficients[2] * temp$Temperature
                          + model_months_plm_pooled_alt$coefficients[3] * temp$Percentage_of_Unemployed_18_64
@@ -143,4 +144,4 @@ rm(model_months_negbin_fixed,model_months_negbin_pooled)
 predictions <- temp[ ,-c(2,3,4,7,8,9,10,13,16,19)]
 write_csv(predictions, "predictions.csv")
 
-rm(temp)
+rm(temp, form,form_intercept)

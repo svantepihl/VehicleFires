@@ -5,6 +5,10 @@ require(Metrics)
 require(lubridate)
 
 
+
+citation(package = "surveillance")
+
+
 predictions <- read_excel("DATA/predictions.xlsx")
 
 predictions <- subset(predictions,year(predictions$Date)==2018)
@@ -15,8 +19,6 @@ predictions <- subset(predictions,year(predictions$Date)==2018)
 rmse(predictions$`Actual Vehicle Fires`, predictions$`Continuous Pooled`)
 #MAE
 mae(predictions$`Actual Vehicle Fires`, predictions$`Continuous Pooled`)
-#MSE 
-mse(predictions$`Actual Vehicle Fires`, predictions$`Continuous Pooled`)
 # Dss & logs
 summary(scores(predictions$`Actual Vehicle Fires`, predictions$`Continuous Pooled`, which = c("logs", "dss")))
 
@@ -26,8 +28,6 @@ summary(scores(predictions$`Actual Vehicle Fires`, predictions$`Continuous Poole
 rmse(predictions$`Actual Vehicle Fires`, predictions$`Continuous Random Effect`)
 #MAE
 mae(predictions$`Actual Vehicle Fires`, predictions$`Continuous Random Effect`)
-#MSE 
-mse(predictions$`Actual Vehicle Fires`, predictions$`Continuous Random Effect`)
 # Dss & logs
 summary(scores(predictions$`Actual Vehicle Fires`, predictions$`Continuous Random Effect`, which = c("logs", "dss")))
 
@@ -53,8 +53,6 @@ summary(scores(predictions$`Actual Vehicle Fires`, predictions$`Continuous Fixed
 rmse(predictions$`Actual Vehicle Fires`, predictions$`Poisson Pooled`)
 #MAE
 mae(predictions$`Actual Vehicle Fires`, predictions$`Poisson Pooled`)
-#MSE 
-mse(predictions$`Actual Vehicle Fires`, predictions$`Poisson Pooled`)
 # Dss & logs
 summary(scores(predictions$`Actual Vehicle Fires`, predictions$`Poisson Pooled`, which = c("logs", "dss")))
 
@@ -64,8 +62,6 @@ summary(scores(predictions$`Actual Vehicle Fires`, predictions$`Poisson Pooled`,
 rmse(predictions$`Actual Vehicle Fires`, predictions$`Poisson Fixed Effect`)
 #MAE
 mae(predictions$`Actual Vehicle Fires`, predictions$`Poisson Fixed Effect`)
-#MSE 
-mse(predictions$`Actual Vehicle Fires`, predictions$`Poisson Fixed Effect`)
 # Dss & logs
 summary(scores(predictions$`Actual Vehicle Fires`, predictions$`Poisson Fixed Effect`, which = c("logs", "dss")))
 
@@ -83,15 +79,16 @@ summary(scores(predictions$`Actual Vehicle Fires`, predictions$`NegBin Pooled`, 
 
 
 ### NegBin Fixed = 12.7824
-predictions$`NegBin Fixed Effect`
+#predictions$`NegBin Fixed Effect`
 #RMSE
 rmse(predictions$`Actual Vehicle Fires`, predictions$`NegBin Fixed Effect`)
 #MAE
 mae(predictions$`Actual Vehicle Fires`, predictions$`NegBin Fixed Effect`)
-#MSE 
-mse(predictions$`Actual Vehicle Fires`, predictions$`NegBin Fixed Effect`)
 # Dss & logs
 summary(scores(predictions$`Actual Vehicle Fires`, predictions$`NegBin Fixed Effect`, size = 12.7824 ,which = c("logs", "dss")))
+
+
+
 
 
 

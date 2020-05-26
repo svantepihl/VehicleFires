@@ -1,7 +1,8 @@
 require(readr)
 require(zoo)
 require(lubridate)
-#for Leo's computer
+
+#for windows, if problem with encoding
 #getOption("encoding")
 #options(encoding = "ISO-8859-1")
 #Sys.setlocale(category = "LC_ALL", locale = "Swedish")
@@ -15,9 +16,12 @@ if(file.exists("DATA/dat_months_stockholm_all.csv")){
   dat_months_stockholm <- subset(dat_months_stockholm_all, year(dat_months_stockholm_all$Date) != 2018)
 } else {
   print("LOADING DATA DURIATION APPROX 15 MIN")
-  source("ImportCleanWrangle.R")
+  source("Code/ImportCleanWrangle.R")
 }
 
 # Get predictions for model
-source("Predict.R")
+source("Code/Predict.R")
+
+# All other code is in folder 'Code'
+
 
