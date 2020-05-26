@@ -142,6 +142,6 @@ temp$PredictionNegBinFixed <- exp((as.numeric(temp$NegBinFixedEffect) + model_mo
 rm(model_months_negbin_fixed,model_months_negbin_pooled)
 
 predictions <- temp[ ,-c(2,3,4,7,8,9,10,13,16,19)]
-write_csv(predictions, "predictions.csv")
+#write_csv(predictions, "predictions.csv")
 
 rm(temp, form,form_intercept)
